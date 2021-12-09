@@ -1,0 +1,3 @@
+is_global = true
+build_property.RootNamespace = FileArchiver.Common
+build_property.ProjectDir = C:\Project-FileZipper\FileArchiver-Deployed-Remote\FileZipper-Local\FileArchiver.Common\

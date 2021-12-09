@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[Users]
+(
+	[Id] UNIQUEIDENTIFIER  PRIMARY KEY default NEWID(),
+	[Username] VARCHAR(100) NOT NULL,
+	[Password] VARCHAR(128) NOT NULL
+)

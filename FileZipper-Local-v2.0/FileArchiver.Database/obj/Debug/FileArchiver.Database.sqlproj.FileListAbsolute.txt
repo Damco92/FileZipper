@@ -1,0 +1,5 @@
+C:\Projects\FileArchiver\FileArchiver\FileArchiver.Database\bin\Debug\FileArchiver.Database.dacpac
+C:\Projects\FileArchiver\FileArchiver\FileArchiver.Database\bin\Debug\FileArchiver.Database.dll
+C:\Projects\FileArchiver\FileArchiver\FileArchiver.Database\bin\Debug\FileArchiver.Database.pdb
+C:\Projects\FileArchiver\FileArchiver\FileArchiver.Database\obj\Debug\FileArchiver.Database.dll
+C:\Projects\FileArchiver\FileArchiver\FileArchiver.Database\obj\Debug\FileArchiver.Database.pdb

@@ -1,0 +1,56 @@
+﻿@using FileArchiverCommon.ViewModels
+@model UserViewModel
+        <div class="container mt-4">
+            <div class="row mb-5">
+                <div class="col-md-4">
+                    <h5 class="ml-3 text-left" style="top: 60px">Logged in admin: @Model.Name</h5>
+                </div>
+                <div class="col-md-3">
+                    @Html.ActionLink(linkText: "Edit user details", actionName: "UpdateUser", routeValues: null, htmlAttributes: new { @class = "btn btn-success btn-sm text-center mr-5", @style = "top: 60px;" })
+                </div>
+                <div class="col-md-3">
+                    @Html.ActionLink(linkText: "Register new user", actionName: "RegisterUser", routeValues: null, htmlAttributes: new { @class = "btn btn-success btn-sm text-center mr-5", @style = "top: 60px;" })
+                </div>
+                <div class="col-md-2">
+                    @Html.ActionLink(linkText: "Log out", controllerName: "Login", actionName: "Logout", routeValues: null, htmlAttributes: new { @class = "btn btn-danger btn-sm text-center mr-5", @style = "top: 60px;" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-10 ml-4">
+                    <div class="row border-bottom border-dark mb-3">
+                        <div class="col-md-5">
+                            <label class="text-left d-inline-block font-weight-bold">Document name</label>
+                        </div>
+                        <div class="col-md-5 text-left">
+                            <label class="d-inline-block font-weight-bold">Date Created</label>
+                        </div>
+                        <div class="col-md-2 text-right">
+                            <label class="d-inline-block text-right"></label>
+                        </div>
+                    </div>
+                   @{
+                        for (var i = 0; i < Model.Files.Count; i++)
+                        {
+                           <div class="row border-bottom">
+                              <div class="col-md-5">
+                                 <label id="file_@i" class="text-left d-inline-block">@Model.Files[i].FileName</label>
+                              </div>
+                              <div class="col-md-5 text-left">
+                                  <label class="d-inline-block">@Model.Files[i].Created.ToString("dd-MM-yyyy HH:mm")</label>
+                              </div>
+                              <div class="col-md-2 text-right">
+                                  <a href="@Url.Action("DownloadFile", "Home", new { fileId = Model.Files[@i].FileId  })">Download</a>
+                              </div>
+                           </div>
+                        }
+                    }
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    @Html.ActionLink(linkText: "Upload file", actionName: "UploadFile", routeValues: null, htmlAttributes: new { @class = "btn btn-info btn-sm", @style = "position:fixed; bottom:70px" })
+                </div>
+            </div>
+        </div>

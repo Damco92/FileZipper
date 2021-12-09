@@ -1,0 +1,107 @@
+﻿@using FileArchiverCommon.ViewModels
+@model UploadFileViewModel
+
+    <form enctype='multipart/form-data' method="post" role="form">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4 class="text-center">Fill the form to insert a file</h4>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("Username", "Please select a username", new { @class = "ml-4 mb-4" })
+                @Html.DropDownListFor(x => x.Username, new SelectList(Model.Users.Select(x => x.Username)), null, new { @class = "dropdown mt-4", id = "username" })
+            </div>
+            <div class="form-group">
+                @Html.Label("Username", "Please select a document", new { @class = "ml-4 mb-4" })
+                @Html.DropDownListFor(x => x.DocumentName, new SelectList(Model.Documents.Select(x => x.DocumentName)), "", new { @class = "dropdown mt-4", id = "documentName" })
+            </div>
+            <div class="form-group">
+                @Html.TextBoxFor(x => x.File.FileData, null, htmlAttributes: new { type = "file", @class = "text-center", id = "fileId" })
+                <label id="errorMessage" style="font-size: small; color: red;"></label>
+            </div>
+            <div class="form-group mt-4">
+                <div class="col-md-12 text-center">
+                    <button class="btn btn-success mt-4" type="submit" id="uploadButton">Upload file</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    @section scripts {
+        <script>
+            let regexForFile;
+            let documentName;
+            $("#uploadButton").prop('disabled', true);
+            $('#documentName').change(() => {
+                documentName = $('#documentName').val();
+                if (documentName === "") {
+                    $("#uploadButton").prop('disabled', true);
+                    return;
+                }
+                $("#uploadButton").prop('disabled', false);
+                $.ajax({
+                    'url': 'http://qdeawevtskeb03:8082/api/documentTypes/getMaskForDocument/' + documentName + '/',
+                    'type': 'GET',
+                    'data': documentName,
+                    'dataType': 'text',
+                    'async': false,
+                    'success': function (data) {
+                        regexForFile = data;
+                    },
+                    'error': function (request, error) {
+                        alert("Request: " + JSON.stringify(request));
+                    }
+                });
+            });
+
+            $("#fileId").change(function () {
+                let fileName = this.value.replace(/^.*[\\\/]/, '').replace(/\.[^/.]+$/, "");
+                let regex = new RegExp(regexForFile);
+                let isFileNameValid = regex.test(fileName);
+                let fullFileNameWithExtenstion = this.value.replace(/^.*[\\\/]/, '');
+                if (!isFileNameValid) {
+                    $('#errorMessage').show();
+                    $('#errorMessage').text('Sorry document name not valid!');
+                }
+                else {
+                    $('#errorMessage').hide();
+                    $('#uploadButton').prop('disabled', false);
+                }
+                let allFilesNames;
+                let username = $('#username').val();
+                $.ajax({
+                    'url': 'http://qdeawevtskeb03:8082/api/files/getAllFiles/' + username + '/',
+                    'type': 'GET',
+                    'data': username,
+                    'dataType': 'text',
+                    'async': false,
+                    'success': function (response) {
+                        allFilesNames = JSON.parse(response);
+                        let fileWithSamename = allFilesNames.filter(file => file.fileName === fullFileNameWithExtenstion).length;
+                        if (fileWithSamename > 0) {
+                            $('#errorMessage').show();
+                            $('#errorMessage').text('A file with that name alerady exists! Please choose an other file or rename the file');
+                            $('#fileId').val('');
+                            $("#uploadButton").prop('disabled', true);
+                        }
+                    },
+                    'error': function (request, error) {
+                        console.log(allFilesNames);
+                    }
+                });
+            });
+
+            $('#uploadFileForm').submit(function () {
+                $(this).find(':submit').attr('disabled', 'disabled');
+            });
+
+            $('#uploadButton').click(() => {
+                this.prop('disabled', true);
+                let fileId = $('#fileId').val();
+                if (fileId === null || fileId === '') {
+                    $('#errorMessage').show();
+                    $('#errorMessage').text('You must choose a file!');
+                }
+            });
+        </script>
+    }

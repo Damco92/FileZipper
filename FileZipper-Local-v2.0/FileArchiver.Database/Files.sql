@@ -1,0 +1,11 @@
+﻿CREATE TABLE [dbo].[Files]
+(
+	[Id] UNIQUEIDENTIFIER  PRIMARY KEY default NEWID(),
+	[UserId] UNIQUEIDENTIFIER NOT NULL,
+	[DocumentTypeId] INT NOT NULL,
+
+    CONSTRAINT FK_DocumentTypeId FOREIGN KEY (DocumentTypeId)
+        REFERENCES DocumentTypes(Id),
+	CONSTRAINT FK_UserId FOREIGN KEY (UserId)
+		REFERENCES Users(Id)
+)
