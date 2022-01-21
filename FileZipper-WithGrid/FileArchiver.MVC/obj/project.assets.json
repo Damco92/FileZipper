@@ -7698,11 +7698,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\d.stojanov\\Desktop\\FileZipper-Local-v2.0\\FileArchiver.MVC\\FileArchiver.MVC.csproj",
+      "projectUniqueName": "C:\\Project-FileZipper\\FileArchiver-Deployed-Local\\FileZipper-WithGrid\\FileArchiver.MVC\\FileArchiver.MVC.csproj",
       "projectName": "FileArchiver.MVC",
-      "projectPath": "C:\\Users\\d.stojanov\\Desktop\\FileZipper-Local-v2.0\\FileArchiver.MVC\\FileArchiver.MVC.csproj",
+      "projectPath": "C:\\Project-FileZipper\\FileArchiver-Deployed-Local\\FileZipper-WithGrid\\FileArchiver.MVC\\FileArchiver.MVC.csproj",
       "packagesPath": "C:\\Users\\d.stojanov\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\d.stojanov\\Desktop\\FileZipper-Local-v2.0\\FileArchiver.MVC\\obj\\",
+      "outputPath": "C:\\Project-FileZipper\\FileArchiver-Deployed-Local\\FileZipper-WithGrid\\FileArchiver.MVC\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -7722,8 +7722,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\d.stojanov\\Desktop\\FileZipper-Local-v2.0\\FileArchiver.Common\\FileArchiver.Common.csproj": {
-              "projectPath": "C:\\Users\\d.stojanov\\Desktop\\FileZipper-Local-v2.0\\FileArchiver.Common\\FileArchiver.Common.csproj"
+            "C:\\Project-FileZipper\\FileArchiver-Deployed-Local\\FileZipper-WithGrid\\FileArchiver.Common\\FileArchiver.Common.csproj": {
+              "projectPath": "C:\\Project-FileZipper\\FileArchiver-Deployed-Local\\FileZipper-WithGrid\\FileArchiver.Common\\FileArchiver.Common.csproj"
             }
           }
         }

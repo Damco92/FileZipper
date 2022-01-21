@@ -5878,11 +5878,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\d.stojanov\\Desktop\\FileZipper-Local-v2.0\\FileArchiver.API\\FileArchiver.API.csproj",
+      "projectUniqueName": "C:\\Project-FileZipper\\FileArchiver-Deployed-Local\\FileZipper-WithGrid\\FileArchiver.API\\FileArchiver.API.csproj",
       "projectName": "FileArchiver.API",
-      "projectPath": "C:\\Users\\d.stojanov\\Desktop\\FileZipper-Local-v2.0\\FileArchiver.API\\FileArchiver.API.csproj",
+      "projectPath": "C:\\Project-FileZipper\\FileArchiver-Deployed-Local\\FileZipper-WithGrid\\FileArchiver.API\\FileArchiver.API.csproj",
       "packagesPath": "C:\\Users\\d.stojanov\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\d.stojanov\\Desktop\\FileZipper-Local-v2.0\\FileArchiver.API\\obj\\",
+      "outputPath": "C:\\Project-FileZipper\\FileArchiver-Deployed-Local\\FileZipper-WithGrid\\FileArchiver.API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -5902,11 +5902,11 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\d.stojanov\\Desktop\\FileZipper-Local-v2.0\\FileArchiver.Domain\\FileArchiver.Domain.csproj": {
-              "projectPath": "C:\\Users\\d.stojanov\\Desktop\\FileZipper-Local-v2.0\\FileArchiver.Domain\\FileArchiver.Domain.csproj"
+            "C:\\Project-FileZipper\\FileArchiver-Deployed-Local\\FileZipper-WithGrid\\FileArchiver.Domain\\FileArchiver.Domain.csproj": {
+              "projectPath": "C:\\Project-FileZipper\\FileArchiver-Deployed-Local\\FileZipper-WithGrid\\FileArchiver.Domain\\FileArchiver.Domain.csproj"
             },
-            "C:\\Users\\d.stojanov\\Desktop\\FileZipper-Local-v2.0\\FileArchiver.Services\\FileArchiver.Services.csproj": {
-              "projectPath": "C:\\Users\\d.stojanov\\Desktop\\FileZipper-Local-v2.0\\FileArchiver.Services\\FileArchiver.Services.csproj"
+            "C:\\Project-FileZipper\\FileArchiver-Deployed-Local\\FileZipper-WithGrid\\FileArchiver.Services\\FileArchiver.Services.csproj": {
+              "projectPath": "C:\\Project-FileZipper\\FileArchiver-Deployed-Local\\FileZipper-WithGrid\\FileArchiver.Services\\FileArchiver.Services.csproj"
             }
           }
         }

@@ -76,3 +76,16 @@ C:\Users\d.stojanov\Desktop\FileZipper-Local-v2.0\FileArchiver.Domain\obj\Debug\
 C:\Users\d.stojanov\Desktop\FileZipper-Local-v2.0\FileArchiver.Domain\obj\Debug\netcoreapp3.1\FileArchiver.Domain.dll
 C:\Users\d.stojanov\Desktop\FileZipper-Local-v2.0\FileArchiver.Domain\obj\Debug\netcoreapp3.1\FileArchiver.Domain.pdb
 C:\Users\d.stojanov\Desktop\FileZipper-Local-v2.0\FileArchiver.Domain\obj\Debug\netcoreapp3.1\FileArchiver.Domain.genruntimeconfig.cache
+C:\Project-FileZipper\FileArchiver-Deployed-Local\FileZipper-WithGrid\FileArchiver.Domain\bin\Debug\netcoreapp3.1\FileArchiver.Domain.deps.json
+C:\Project-FileZipper\FileArchiver-Deployed-Local\FileZipper-WithGrid\FileArchiver.Domain\bin\Debug\netcoreapp3.1\FileArchiver.Domain.runtimeconfig.json
+C:\Project-FileZipper\FileArchiver-Deployed-Local\FileZipper-WithGrid\FileArchiver.Domain\bin\Debug\netcoreapp3.1\FileArchiver.Domain.runtimeconfig.dev.json
+C:\Project-FileZipper\FileArchiver-Deployed-Local\FileZipper-WithGrid\FileArchiver.Domain\bin\Debug\netcoreapp3.1\FileArchiver.Domain.dll
+C:\Project-FileZipper\FileArchiver-Deployed-Local\FileZipper-WithGrid\FileArchiver.Domain\bin\Debug\netcoreapp3.1\FileArchiver.Domain.pdb
+C:\Project-FileZipper\FileArchiver-Deployed-Local\FileZipper-WithGrid\FileArchiver.Domain\obj\Debug\netcoreapp3.1\FileArchiver.Domain.csproj.AssemblyReference.cache
+C:\Project-FileZipper\FileArchiver-Deployed-Local\FileZipper-WithGrid\FileArchiver.Domain\obj\Debug\netcoreapp3.1\FileArchiver.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Project-FileZipper\FileArchiver-Deployed-Local\FileZipper-WithGrid\FileArchiver.Domain\obj\Debug\netcoreapp3.1\FileArchiver.Domain.AssemblyInfoInputs.cache
+C:\Project-FileZipper\FileArchiver-Deployed-Local\FileZipper-WithGrid\FileArchiver.Domain\obj\Debug\netcoreapp3.1\FileArchiver.Domain.AssemblyInfo.cs
+C:\Project-FileZipper\FileArchiver-Deployed-Local\FileZipper-WithGrid\FileArchiver.Domain\obj\Debug\netcoreapp3.1\FileArchiver.Domain.csproj.CoreCompileInputs.cache
+C:\Project-FileZipper\FileArchiver-Deployed-Local\FileZipper-WithGrid\FileArchiver.Domain\obj\Debug\netcoreapp3.1\FileArchiver.Domain.dll
+C:\Project-FileZipper\FileArchiver-Deployed-Local\FileZipper-WithGrid\FileArchiver.Domain\obj\Debug\netcoreapp3.1\FileArchiver.Domain.pdb
+C:\Project-FileZipper\FileArchiver-Deployed-Local\FileZipper-WithGrid\FileArchiver.Domain\obj\Debug\netcoreapp3.1\FileArchiver.Domain.genruntimeconfig.cache

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7rAK+FntS5e+/tWqbmNW6RQpzl/5ekcewN0LOw1yNVp7wizC7XW/X8Zm0DLKuEA+/tuR0dv2mfqEdjl42f7pcA==",
+  "dgSpecHash": "Wwv/NQcU7N9BztO2RSa/89Xe9SDJvRm509UCT4ac289ad7faUHTtW2cpS7i3Bn7myZH87Q6ehusAXSE+BQ8weg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\d.stojanov\\Desktop\\FileZipper-Local-v2.0\\FileArchiver.MVC\\FileArchiver.MVC.csproj",
+  "projectFilePath": "C:\\Project-FileZipper\\FileArchiver-Deployed-Local\\FileZipper-WithGrid\\FileArchiver.MVC\\FileArchiver.MVC.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\d.stojanov\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\d.stojanov\\.nuget\\packages\\microsoft.aspnetcore.authentication.microsoftaccount\\3.1.8\\microsoft.aspnetcore.authentication.microsoftaccount.3.1.8.nupkg.sha512",

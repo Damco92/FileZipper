@@ -4,201 +4,199 @@
 }
 
 @model UserViewModel
-<div class="container mt-4">
-    <div class="row mb-5">
-        <div class="col-md-4">
-            <h5 class="ml-3 text-left" style="top: 60px">Logged in admin: @Model.Name</h5>
+        <div class="container mt-4">
+            <div class="row mb-5">
+                <div class="col-md-4">
+                    <h5 class="ml-3 text-left" style="top: 60px">Logged in admin: @Model.Name</h5>
+                </div>
+                <div class="col-md-3">
+                    @Html.ActionLink(linkText: "Edit user details", actionName: "UpdateUser", routeValues: null, htmlAttributes: new { @class = "btn btn-success btn-sm text-center mr-5", @style = "top: 60px;" })
+                </div>
+                <div class="col-md-3">
+                    @Html.ActionLink(linkText: "Register new user", actionName: "RegisterUser", routeValues: null, htmlAttributes: new { @class = "btn btn-success btn-sm text-center mr-5", @style = "top: 60px;" })
+                </div>
+                <div class="col-md-2">
+                    @Html.ActionLink(linkText: "Log out", controllerName: "Login", actionName: "Logout", routeValues: null, htmlAttributes: new { @class = "btn btn-danger btn-sm text-center mr-5", @style = "top: 60px;" })
+                </div>
+            </div>
+            <div>
+                <div class="form-group mt-4">
+                    <ejs-grid id="Grid" dataSource="@ViewBag.DataSource" allowSorting="true" allowPaging="true" width="1200" height="303" load="load" allowResizing="true" enableHover="true" enableStickyHeader="true" toolbar="@(new List<string>() {"Search"})" rowSelected="rowSelected">
+                        <e-grid-columns>
+                            <e-grid-column field="FileId" headerText="Id" headerTextAlign="Center" width="150" textAlign="Left" customAttributes=@(new { @class = "customcss" })></e-grid-column>
+                            <e-grid-column field="FileName" headerText="Document Name" headerTextAlign="Center" width="150" textAlign="Left" customAttributes=@(new { @class = "customcss" })></e-grid-column>
+                            <e-grid-column field="DocumentType.DocumentName" headerText="Document Type" headerTextAlign="Center" width="150" textAlign="Left" customAttributes=@(new { @class = "customcss" })></e-grid-column>
+                            <e-grid-column field="UserVM.Name" headerText="User" headerTextAlign="Center" width="150" textAlign="Left" customAttributes=@(new { @class = "customcss" })></e-grid-column>
+                            <e-grid-column field="Created" headerText="Date" headerTextAlign="Center" width="150" editType="datetimepickeredit" textAlign="Center" format="yMd" customAttributes=@(new { @class = "customcss" })></e-grid-column>
+                            <e-grid-column field="isConfirmed" headerTextAlign="Center" template="#checkboxTemplate" editType="booleanedit" type="boolean" textAlign="Center" width="50" customAttributes=@(new { @class = "customcss" })></e-grid-column>
+                            <e-grid-column  headerText="Download" template="#download" headerTextAlign="Center" textAlign="Center" width="150" customAttributes=@(new { @class = "customcss" })></e-grid-column>
+                        </e-grid-columns>
+                    </ejs-grid>
+                </div>
+            </div>
+            <div class="col-md-12 text-center">
+                <button class="btn btn-success mt-4" type="submit" id="updateButton" style="right:100px">Update</button>
+            </div><br />
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    @Html.ActionLink(linkText: "Upload Files", actionName: "UploadFile", routeValues: null, htmlAttributes: new { @class = "btn btn-info btn-sm", @style = "position: relative; bottom:0px; left:20px" })
+                </div>
+            </div>
         </div>
-        <div class="col-md-3">
-            @Html.ActionLink(linkText: "Edit user details", actionName: "UpdateUser", routeValues: null, htmlAttributes: new { @class = "btn btn-success btn-sm text-center mr-5", @style = "top: 60px;" })
-        </div>
-        <div class="col-md-3">
-            @Html.ActionLink(linkText: "Register new user", actionName: "RegisterUser", routeValues: null, htmlAttributes: new { @class = "btn btn-success btn-sm text-center mr-5", @style = "top: 60px;" })
-        </div>
-        <div class="col-md-2">
-            @Html.ActionLink(linkText: "Log out", controllerName: "Login", actionName: "Logout", routeValues: null, htmlAttributes: new { @class = "btn btn-danger btn-sm text-center mr-5", @style = "top: 60px;" })
-        </div>
-    </div>
-    <div>
-        <div class="form-group mt-4">
-            <ejs-grid id="Grid" dataSource="@ViewBag.DataSource" allowSorting="true" allowPaging="true" width="1200" height="303" load="load" allowResizing="true" enableHover="true" enableStickyHeader="true" toolbar="@(new List<string>() {"Search"})" rowSelected="rowSelected">
-                <e-grid-columns>
-                    <e-grid-column field="FileId" headerText="Id" headerTextAlign="Center" width="150" textAlign="Left" customAttributes=@(new { @class = "customcss" })></e-grid-column>
-                    <e-grid-column field="FileName" headerText="Document Name" headerTextAlign="Center" width="150" textAlign="Left" customAttributes=@(new { @class = "customcss" })></e-grid-column>
-                    <e-grid-column field="DocumentType.DocumentName" headerText="Document Type" headerTextAlign="Center" width="150" textAlign="Left" customAttributes=@(new { @class = "customcss" })></e-grid-column>
-                    <e-grid-column field="UserVM.Name" headerText="User" headerTextAlign="Center" width="150" textAlign="Left" customAttributes=@(new { @class = "customcss" })></e-grid-column>
-                    <e-grid-column field="Created" headerText="Date" headerTextAlign="Center" width="150" editType="datetimepickeredit" textAlign="Center" format="yMd" customAttributes=@(new { @class = "customcss" })></e-grid-column>
-                    <e-grid-column field="isConfirmed" headerTextAlign="Center" template="#checkboxTemplate" editType="booleanedit" type="boolean" textAlign="Center" width="50" customAttributes=@(new { @class = "customcss" })></e-grid-column>
-                    <e-grid-column headerText="Download" template="#download" headerTextAlign="Center" textAlign="Center"  width="150" customAttributes=@(new { @class = "customcss" })></e-grid-column>
-                </e-grid-columns>
-            </ejs-grid>
-        </div>
-    </div>
-    <div class="col-md-12 text-center">
-        <button class="btn btn-success mt-4" type="submit" id="updateButton" style="right:100px">Update</button>
-    </div><br />
-    <div class="row">
-        <div class="col-md-12 text-center">
-            @Html.ActionLink(linkText: "Upload Files", actionName: "UploadFile", routeValues: null, htmlAttributes: new { @class = "btn btn-info btn-sm", @style = "position: relative; bottom:0px; left:20px" })
-        </div>
-    </div>
-</div>
+    @section scripts {
+        <script id="download" type="text/x-template">
+            @{
+                <button class="btn btn-success btn-sm" onclick="downloadFile()">Download</button>
+            }
+        </script>
 
-@section scripts {
-    <script id="download" type="text/x-template">
-        @{ 
-           <input type="button" class="btn btn-success btn-sm" value="Download" onclick="downloadFile()" />
-        }
-    </script>
-
-    <script type="text/javascript">
-        function load() {
-            var grid = document.getElementById("Grid").ej2_instances[0];
-            var rowHeight = grid.getRowHeight();
-            var gridHeight = grid.height;
-            var pageSize = grid.pageSettings.pageSize;
-            var pageResize = (gridHeight - (pageSize * rowHeight)) / rowHeight;
-            grid.pageSettings.pageSize = pageSize + Math.round(pageResize);
-            grid.gridLines = "Both";
-        }
-        document.getElementById('search').addEventListener('click', () => {
-            var grid = document.getElementById("Grid").ej2_instances[0];
-            var searchString = "";
-            grid.search(searchString);
-        });
-        $('#updateButton').click(() => {
-            //document.getElementById('updateButton').addEventListener('click', () => {
-            $('#isConfirmed').change(() => {
-                let isConfirmed = $('#isConfirmed').val();
-                let fileId = $("#fileId").val();
-                $.ajax({
-                    'url': 'http://localhost:58506/api/users/updateIsConfirmed/' + fileId + '/',
-                    'type': 'PUT',
-                    'data': fileId,
-                    'dataType': 'json',
-                    'success': function (data) {
-                        console.log(isConfirmed);
-                    },
-                    'error': function (request, error) {
-                        alert("Request: " + JSON.stringify(request));
-                    }
+        <script type="text/javascript">
+            function load() {
+                var grid = document.getElementById("Grid").ej2_instances[0];
+                var rowHeight = grid.getRowHeight();
+                var gridHeight = grid.height;
+                var pageSize = grid.pageSettings.pageSize;
+                var pageResize = (gridHeight - (pageSize * rowHeight)) / rowHeight;
+                grid.pageSettings.pageSize = pageSize + Math.round(pageResize);
+                grid.gridLines = "Both";
+            }
+            document.getElementById('search').addEventListener('click', () => {
+                var grid = document.getElementById("Grid").ej2_instances[0];
+                var searchString = "";
+                grid.search(searchString);
+            });
+            $('#updateButton').click(() => {
+                //document.getElementById('updateButton').addEventListener('click', () => {
+                $('#isConfirmed').change(() => {
+                    let isConfirmed = $('#isConfirmed').val();
+                    let fileId = $("#fileId").val();
+                    $.ajax({
+                        'url': 'http://localhost:58506/api/users/updateIsConfirmed/' + fileId + '/',
+                        'type': 'PUT',
+                        'data': fileId,
+                        'dataType': 'json',
+                        'success': function (data) {
+                            console.log(isConfirmed);
+                        },
+                        'error': function (request, error) {
+                            alert("Request: " + JSON.stringify(request));
+                        }
+                    });
                 });
             });
-        });
 
-        function rowSelected() {
-            var grid = document.getElementsByClassName('e-grid')[0].ej2_instances[0];
-            var selectedRecord = grid.getSelectedRecords()[0];
-            return selectedRecord;
+            function rowSelected() {
+                var grid = document.getElementsByClassName('e-grid')[0].ej2_instances[0];
+                var selectedRecord = grid.getSelectedRecords()[0];
+                return selectedRecord;
+            }
+
+            function downloadFile() {
+                var broj = rowSelected().FileId;
+                $.ajax({
+                    type: 'get',
+                    async: true,
+                    url: "/Home/DownloadFile/" + broj,
+                    contentType: "application/text",
+                    success: function (response) {
+                        window.location = '@Url.Action("DownloadFileQuery", "Home")?fileId=' + broj + ''
+                    }
+                });
+            }
+        </script>
+
+
+
+        <script type="text/x-jsrender" id="checkboxTemplate">
+            <label class="main">
+                <input type="checkbox" id="isConfirmed" />
+                <span class="box"></span>
+            </label>
+        </script>
+    }
+
+    <style>
+        .e-grid .e-rowcell.customcss {
+            font-size: 15px;
         }
 
-        function downloadFile() {
-            var broj = rowSelected().FileId;
-            alert(broj);
-            $.ajax({
-                type: 'get',
-                async: false,
-                url: "/Home/DownloadFile/" + broj,
-                contentType: "application/text",
-                success: function (response) {
-                    
-                },
-            });
+        .e-grid .e-headercell.customcss {
+            background-color: lightgray;
+            color: darkslategray;
+            font-family: Arial;
+            font-size: 20px;
+            font-weight: bold;
         }
-    </script>
 
+        .main {
+            display: block;
+            position: relative;
+            padding-left: 45px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            font-size: 20px;
+        }
 
+        /* Hide the default checkbox */
+        input[type=checkbox] {
+            visibility: hidden;
+        }
 
-    <script type="text/x-jsrender" id="checkboxTemplate">
-        <label class="main">
-            <input type="checkbox" id="isConfirmed" />
-            <span class="box"></span>
-        </label>
-    </script>
-}
-
-<style>
-    .e-grid .e-rowcell.customcss {
-        font-size: 15px;
-    }
-
-    .e-grid .e-headercell.customcss {
-        background-color: lightgray;
-        color: darkslategray;
-        font-family: Arial;
-        font-size: 20px;
-        font-weight: bold;
-    }
-
-    .main {
-        display: block;
-        position: relative;
-        padding-left: 45px;
-        margin-bottom: 15px;
-        cursor: pointer;
-        font-size: 20px;
-    }
-
-    /* Hide the default checkbox */
-    input[type=checkbox] {
-        visibility: hidden;
-    }
-
-    /* Creating a custom checkbox
+        /* Creating a custom checkbox
         based on demand */
-    .box {
-        position: absolute;
-        top: 5px;
-        left: 5px;
-        height: 25px;
-        width: 25px;
-        background-color: aliceblue;
-    }
+        .box {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            height: 25px;
+            width: 25px;
+            background-color: aliceblue;
+        }
 
-    /* Specify the background color to be
+        /* Specify the background color to be
         shown when hovering over checkbox */
-    .main:hover input ~ .box {
-        background-color: green;
-    }
+        .main:hover input ~ .box {
+            background-color: green;
+        }
 
-    /* Specify the background color to be
+        /* Specify the background color to be
         shown when checkbox is active */
-    .main input:active ~ .box {
-        background-color: red;
-    }
+        .main input:active ~ .box {
+            background-color: red;
+        }
 
-    /* Specify the background color to be
+        /* Specify the background color to be
         shown when checkbox is checked */
-    .main input:checked ~ .box {
-        background-color: green;
-    }
+        .main input:checked ~ .box {
+            background-color: green;
+        }
 
-    /* Checkmark to be shown in checkbox */
-    /* It is not be shown when not checked */
-    .box:after {
-        content: "";
-        position: absolute;
-        display: none;
-    }
+        /* Checkmark to be shown in checkbox */
+        /* It is not be shown when not checked */
+        .box:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
 
-    /* Display checkmark when checked */
-    .main input:checked ~ .box:after {
-        display: block;
-    }
+        /* Display checkmark when checked */
+        .main input:checked ~ .box:after {
+            display: block;
+        }
 
-    /* Styling the checkmark using webkit */
-    /* Rotated the rectangle by 45 degree and
+        /* Styling the checkmark using webkit */
+        /* Rotated the rectangle by 45 degree and
         showing only two border to make it look
         like a tickmark */
-    .main .box:after {
-        left: 10px;
-        bottom: 7px;
-        width: 6px;
-        height: 12px;
-        border: solid white;
-        border-width: 0 4px 4px 0;
-        -webkit-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
-        transform: rotate(45deg);
-    }
-</style>
+        .main .box:after {
+            left: 10px;
+            bottom: 7px;
+            width: 6px;
+            height: 12px;
+            border: solid white;
+            border-width: 0 4px 4px 0;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+    </style>

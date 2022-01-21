@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "XP41z1G2iaTlE/1F45MhwbxGb+lj+LKb/WSSe3wnj4KSB9ZRVmnWWG2moMv06PxWrjKoP0dtLO28undC9+yDGA==",
+  "dgSpecHash": "OGW0Z3hDkRSlScvBDxNPQkRhgv79SOh4qEIbtHHDCnzN9LZeMaGOoz4S+1cRQnXyrlk/AUf+drojgnkn1bCOJA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\d.stojanov\\Desktop\\FileZipper-Local-v2.0\\FileArchiver.Common\\FileArchiver.Common.csproj",
+  "projectFilePath": "C:\\Project-FileZipper\\FileArchiver-Deployed-Local\\FileZipper-WithGrid\\FileArchiver.Common\\FileArchiver.Common.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\d.stojanov\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.8\\microsoft.aspnetcore.http.features.5.0.8.nupkg.sha512",
     "C:\\Users\\d.stojanov\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.0\\microsoft.bcl.asyncinterfaces.1.1.0.nupkg.sha512",

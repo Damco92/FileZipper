@@ -198,34 +198,22 @@ namespace FileArchiver.MVC.Controllers
         }
 
         [HttpGet("Home/DownloadFile/{fileId}")]
-        public async Task<ActionResult> DownloadFile([FromRoute] int fileId)
+        public async Task<FileResult> DownloadFile([FromRoute] int fileId)
         {
             var baseAddress = _configuration.GetValue<string>("ApiEndpoints:BaseAddress");
             var getFileByIdMethod = _configuration.GetValue<string>("ApiEndpoints:Controllers:Users:getFileById");
             var fileToBeDownloaded = await HttpClientHelper.GetFile(fileId, baseAddress, getFileByIdMethod);
-
-
             return File(fileToBeDownloaded.FileByteData, System.Net.Mime.MediaTypeNames.Application.Octet, Path.GetFileNameWithoutExtension(fileToBeDownloaded.FileName) + ".7z");
         }
-        //public async Task<IActionResult> UpdateIsConfirmed(int fileId)
-        //{
-        //    var baseAddress = _configuration.GetValue<string>("ApiEndpoints:BaseAddress");
-        //    var getFileByIdMethod = _configuration.GetValue<string>("ApiEndpoints:Controllers:Users:getFileById");
-        //    var file = await HttpClientHelper.GetFile(fileId, baseAddress, getFileByIdMethod);
-        //    try
-        //    {
-        //        if (file.IsConfirmed == true)
-        //        {
-        //            ViewBag.data = file.IsConfirmed == true;
-        //            return View("AdminLoginView");
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return View("_CouldNotLoadErrorView", ex.Message);
-        //    }
-        //    return View("_CouldNotLoadErrorView");
-        //}
+
+        [HttpGet("Home/DownloadFileQuery")]
+        public async Task<FileResult> DownloadFileQuery([FromQuery] int fileId)
+        {
+            var baseAddress = _configuration.GetValue<string>("ApiEndpoints:BaseAddress");
+            var getFileByIdMethod = _configuration.GetValue<string>("ApiEndpoints:Controllers:Users:getFileById");
+            var fileToBeDownloaded = await HttpClientHelper.GetFile(fileId, baseAddress, getFileByIdMethod);
+            return File(fileToBeDownloaded.FileByteData, System.Net.Mime.MediaTypeNames.Application.Octet, Path.GetFileNameWithoutExtension(fileToBeDownloaded.FileName) + ".7z");
+        }
 
         [HttpGet]
         public IActionResult RegisterUser()

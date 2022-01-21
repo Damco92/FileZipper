@@ -64,3 +64,16 @@ C:\Users\d.stojanov\Desktop\FileZipper-Local-v2.0\FileArchiver.Common\obj\Debug\
 C:\Users\d.stojanov\Desktop\FileZipper-Local-v2.0\FileArchiver.Common\obj\Debug\netcoreapp3.1\FileArchiver.Common.csproj.CopyComplete
 C:\Users\d.stojanov\Desktop\FileZipper-Local-v2.0\FileArchiver.Common\obj\Debug\netcoreapp3.1\FileArchiver.Common.dll
 C:\Users\d.stojanov\Desktop\FileZipper-Local-v2.0\FileArchiver.Common\obj\Debug\netcoreapp3.1\FileArchiver.Common.pdb
+C:\Project-FileZipper\FileArchiver-Deployed-Local\FileZipper-WithGrid\FileArchiver.Common\bin\Debug\netcoreapp3.1\FileArchiver.Common.deps.json
+C:\Project-FileZipper\FileArchiver-Deployed-Local\FileZipper-WithGrid\FileArchiver.Common\bin\Debug\netcoreapp3.1\FileArchiver.Common.dll
+C:\Project-FileZipper\FileArchiver-Deployed-Local\FileZipper-WithGrid\FileArchiver.Common\bin\Debug\netcoreapp3.1\FileArchiver.Common.pdb
+C:\Project-FileZipper\FileArchiver-Deployed-Local\FileZipper-WithGrid\FileArchiver.Common\bin\Debug\netcoreapp3.1\FileArchiver.Domain.dll
+C:\Project-FileZipper\FileArchiver-Deployed-Local\FileZipper-WithGrid\FileArchiver.Common\bin\Debug\netcoreapp3.1\FileArchiver.Domain.pdb
+C:\Project-FileZipper\FileArchiver-Deployed-Local\FileZipper-WithGrid\FileArchiver.Common\obj\Debug\netcoreapp3.1\FileArchiver.Common.csproj.AssemblyReference.cache
+C:\Project-FileZipper\FileArchiver-Deployed-Local\FileZipper-WithGrid\FileArchiver.Common\obj\Debug\netcoreapp3.1\FileArchiver.Common.GeneratedMSBuildEditorConfig.editorconfig
+C:\Project-FileZipper\FileArchiver-Deployed-Local\FileZipper-WithGrid\FileArchiver.Common\obj\Debug\netcoreapp3.1\FileArchiver.Common.AssemblyInfoInputs.cache
+C:\Project-FileZipper\FileArchiver-Deployed-Local\FileZipper-WithGrid\FileArchiver.Common\obj\Debug\netcoreapp3.1\FileArchiver.Common.AssemblyInfo.cs
+C:\Project-FileZipper\FileArchiver-Deployed-Local\FileZipper-WithGrid\FileArchiver.Common\obj\Debug\netcoreapp3.1\FileArchiver.Common.csproj.CoreCompileInputs.cache
+C:\Project-FileZipper\FileArchiver-Deployed-Local\FileZipper-WithGrid\FileArchiver.Common\obj\Debug\netcoreapp3.1\FileArchiver.Common.csproj.CopyComplete
+C:\Project-FileZipper\FileArchiver-Deployed-Local\FileZipper-WithGrid\FileArchiver.Common\obj\Debug\netcoreapp3.1\FileArchiver.Common.dll
+C:\Project-FileZipper\FileArchiver-Deployed-Local\FileZipper-WithGrid\FileArchiver.Common\obj\Debug\netcoreapp3.1\FileArchiver.Common.pdb
