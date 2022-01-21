@@ -74,7 +74,7 @@ namespace FileArchiver.Services.Services.Implementation
             }
             catch (Exception ex)
             {
-                var greska = ex.Message;
+                result.ErrorMessage = "You can not download an other user file";
             }
             #endregion
             return result;

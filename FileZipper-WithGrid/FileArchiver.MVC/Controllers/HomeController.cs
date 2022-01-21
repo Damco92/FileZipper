@@ -132,42 +132,6 @@ namespace FileArchiver.MVC.Controllers
             return RedirectToAction("GetToAdminView", loggeduser);
         }
 
-        //[HttpPost]
-        //public async Task<IActionResult> UploadMultipleFiles(UploadFileViewModel uploadFileViewModel)
-        //{
-        //    var baseAddress = _configuration.GetValue<string>("ApiEndpoints:BaseAddress");
-        //    var uploadMultipleFilesMethod = _configuration.GetValue<string>("ApiEndpoints:Controllers:Files:uploadMultipleFiles");
-        //    var credentials = JsonConvert.DeserializeObject<CredentialsViewModel>(HttpContext.Session.GetString("SessionCredentials"));
-        //    var loggeduser = await HttpClientHelper.GetUserByUsername(credentials.Username, baseAddress, uploadMultipleFilesMethod);
-        //    var user = await HttpClientHelper.GetUserByUsername(credentials.Username, baseAddress, uploadMultipleFilesMethod);
-
-        //    if (filesToBeUploaded == null || filesToBeUploaded.Count == 0)
-        //    {
-        //        return RedirectToAction("UploadFile");
-        //    }
-
-        //    foreach (var uploadFileViewModel in filesToBeUploaded)
-        //    {
-        //        uploadFileViewModel.Username = user.Username;
-        //        uploadFileViewModel.IsDownloaded = false;
-        //        uploadFileViewModel.IsConfirmed = false;
-        //        uploadFileViewModel.Created = DateTime.Now;
-        //        uploadFileViewModel.DocumentName = uploadFileViewModel.DocumentName;
-        //        uploadFileViewModel.DocumentTypeId = uploadFileViewModel.DocumentTypeId;
-        //        uploadFileViewModel.FileName = string.Empty;
-        //        uploadFileViewModel.CreatorUsername = credentials.Username;
-        //        uploadFileViewModel.CreatorId = loggeduser.Id;
-        //        uploadFileViewModel.UserId = user.Id;
-        //    }
-
-        //    var uploadFileMethod = _configuration.GetValue<string>("ApiEndpoints:Controllers:Files:uploadFile");
-        //    foreach (var file in filesToBeUploaded)
-        //    {
-        //      //  var response = await HttpClientHelper.UploadFile(file.File, baseAddress + uploadFileMethod);
-        //    }
-        //    return RedirectToAction("GetToAdminView", loggeduser);
-        //}
-
         public async Task<IActionResult> GetToAdminView()
         {
             var credentials = JsonConvert.DeserializeObject<CredentialsViewModel>(HttpContext.Session.GetString("SessionCredentials"));
@@ -198,12 +162,16 @@ namespace FileArchiver.MVC.Controllers
         }
 
         [HttpGet("Home/DownloadFile/{fileId}")]
-        public async Task<FileResult> DownloadFile([FromRoute] int fileId)
+        public async Task<JsonResult> DownloadFile([FromRoute] int fileId)
         {
             var baseAddress = _configuration.GetValue<string>("ApiEndpoints:BaseAddress");
             var getFileByIdMethod = _configuration.GetValue<string>("ApiEndpoints:Controllers:Users:getFileById");
             var fileToBeDownloaded = await HttpClientHelper.GetFile(fileId, baseAddress, getFileByIdMethod);
-            return File(fileToBeDownloaded.FileByteData, System.Net.Mime.MediaTypeNames.Application.Octet, Path.GetFileNameWithoutExtension(fileToBeDownloaded.FileName) + ".7z");
+
+            if(!string.IsNullOrEmpty(fileToBeDownloaded.ErrorMessage))
+                return Json(false);
+
+            return Json(true);
         }
 
         [HttpGet("Home/DownloadFileQuery")]

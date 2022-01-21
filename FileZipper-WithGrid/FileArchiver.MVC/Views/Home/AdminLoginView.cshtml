@@ -99,7 +99,7 @@
                     url: "/Home/DownloadFile/" + broj,
                     contentType: "application/text",
                     success: function (response) {
-                        window.location = '@Url.Action("DownloadFileQuery", "Home")?fileId=' + broj + ''
+                        response ? window.location = '@Url.Action("DownloadFileQuery", "Home")?fileId=' + broj + '' : alert("You can download only your files");
                     }
                 });
             }

@@ -33,6 +33,7 @@ namespace FileArchiverCommon.ViewModels
         public byte[] FileByteData { get; set; } 
         public List<FileModel> FileDataByteArray { get; set; }
         public string CreatorUsername { get; set; }
+        public string ErrorMessage { get; set; }
     }
     public class FileModel
     {
