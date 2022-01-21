@@ -1,0 +1,9 @@
+C:\Users\d.stojanov\Desktop\FileZipper-Local-v2.0\FileArchiver.MVC\obj\Release\net5.0\FileArchiver.MVC.csproj.AssemblyReference.cache
+C:\Users\d.stojanov\Desktop\FileZipper-Local-v2.0\FileArchiver.MVC\obj\Release\net5.0\FileArchiver.MVC.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\d.stojanov\Desktop\FileZipper-Local-v2.0\FileArchiver.MVC\obj\Release\net5.0\FileArchiver.MVC.AssemblyInfoInputs.cache
+C:\Users\d.stojanov\Desktop\FileZipper-Local-v2.0\FileArchiver.MVC\obj\Release\net5.0\FileArchiver.MVC.AssemblyInfo.cs
+C:\Users\d.stojanov\Desktop\FileZipper-Local-v2.0\FileArchiver.MVC\obj\Release\net5.0\FileArchiver.MVC.csproj.CoreCompileInputs.cache
+C:\Users\d.stojanov\Desktop\FileZipper-Local-v2.0\FileArchiver.MVC\obj\Release\net5.0\FileArchiver.MVC.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\d.stojanov\Desktop\FileZipper-Local-v2.0\FileArchiver.MVC\obj\Release\net5.0\FileArchiver.MVC.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\d.stojanov\Desktop\FileZipper-Local-v2.0\FileArchiver.MVC\obj\Release\net5.0\FileArchiver.MVC.RazorAssemblyInfo.cache
+C:\Users\d.stojanov\Desktop\FileZipper-Local-v2.0\FileArchiver.MVC\obj\Release\net5.0\FileArchiver.MVC.RazorAssemblyInfo.cs

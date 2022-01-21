@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "BYCn/4Oa1i2kgTKwtmlHnanIUvyOjWhzzRdePTO/mYuc1L6519KuHBrLu9ygaQjGER94nK7KkbmWFIsUWr96VA==",
+  "dgSpecHash": "OBrESZ0G5xqvmdoNbyY1hkhHU3vJXj+A+OKafxpz3vFULgwYFISeQLncuD+q4AkDLs+1Oh1e4qmXYZWhiKPbSA==",
   "success": true,
-  "projectFilePath": "C:\\Project-FileZipper\\FileArchiver-Deployed-Remote\\FileZipper-Local\\FileArchiver.MVC\\FileArchiver.MVC.csproj",
+  "projectFilePath": "C:\\Project-FileZipper\\FileArchiver-Deployed-Local\\FileZipper-Local-v2.0\\FileArchiver.MVC\\FileArchiver.MVC.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\d.stojanov\\.nuget\\packages\\microsoft.aspnetcore.authentication.microsoftaccount\\3.1.8\\microsoft.aspnetcore.authentication.microsoftaccount.3.1.8.nupkg.sha512",
     "C:\\Users\\d.stojanov\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.8\\microsoft.aspnetcore.http.features.5.0.8.nupkg.sha512",

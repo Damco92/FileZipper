@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "DEh/G/TN1K5taPE9SJ6MkAL6DmfgxbB+V1TYKkvcaro6vTrIJ8AGVdWk0L/zqiKtnJZAgCMvPTNbC4FKrfFStQ==",
+  "dgSpecHash": "YcKvpjJS19q8HO1sr2W8mt4kA0D5TVaOcHPK+WIuaSSIratHDMQRTUCnNtbIoo1dAjreeRpkrRXr3i1agRLlBg==",
   "success": true,
-  "projectFilePath": "C:\\Project-FileZipper\\FileArchiver-Deployed-Remote\\FileZipper-Local\\FileArchiver.Domain\\FileArchiver.Domain.csproj",
+  "projectFilePath": "C:\\Project-FileZipper\\FileArchiver-Deployed-Local\\FileZipper-Local-v2.0\\FileArchiver.Domain\\FileArchiver.Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\d.stojanov\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.0\\microsoft.bcl.asyncinterfaces.1.1.0.nupkg.sha512",
     "C:\\Users\\d.stojanov\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",

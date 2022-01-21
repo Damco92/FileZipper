@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Xgi2QzcRHU1ZYO6zfktg5H9lCKOAjWq+erQ5myCBuAA/hY+YEz0hrm58DYXuXWaX9dSLso4Geqksa/m1kS+Tvw==",
+  "dgSpecHash": "V6GQXsxb0Qa2XkxexIO07A5QM/AbiiTtztBdPBT8rmkO5E6UVh+sIM6DKDaYZviyUJC9OkYXSmACC4dflO5VVw==",
   "success": true,
-  "projectFilePath": "C:\\Project-FileZipper\\FileArchiver-Deployed-Remote\\FileZipper-Local\\FileArchiver.Services\\FileArchiver.Services.csproj",
+  "projectFilePath": "C:\\Project-FileZipper\\FileArchiver-Deployed-Local\\FileZipper-Local-v2.0\\FileArchiver.Services\\FileArchiver.Services.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\d.stojanov\\.nuget\\packages\\microsoft.aspnetcore.http\\2.2.2\\microsoft.aspnetcore.http.2.2.2.nupkg.sha512",
     "C:\\Users\\d.stojanov\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",

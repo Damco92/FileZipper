@@ -1,0 +1,250 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\d.stojanov\\Desktop\\FileZipper-Local-v2.0\\FileArchiver.Services\\FileArchiver.Services.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\d.stojanov\\Desktop\\FileZipper-Local-v2.0\\FileArchiver.Common\\FileArchiver.Common.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\d.stojanov\\Desktop\\FileZipper-Local-v2.0\\FileArchiver.Common\\FileArchiver.Common.csproj",
+        "projectName": "FileArchiver.Common",
+        "projectPath": "C:\\Users\\d.stojanov\\Desktop\\FileZipper-Local-v2.0\\FileArchiver.Common\\FileArchiver.Common.csproj",
+        "packagesPath": "C:\\Users\\d.stojanov\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\d.stojanov\\Desktop\\FileZipper-Local-v2.0\\FileArchiver.Common\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\d.stojanov\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "C:\\Users\\d.stojanov\\Desktop\\FileZipper-Local-v2.0\\FileArchiver.Domain\\FileArchiver.Domain.csproj": {
+                "projectPath": "C:\\Users\\d.stojanov\\Desktop\\FileZipper-Local-v2.0\\FileArchiver.Domain\\FileArchiver.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.AspNetCore.Http.Features": {
+              "target": "Package",
+              "version": "[5.0.8, )"
+            },
+            "Microsoft.Extensions.Logging.Abstractions": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
+            "SharpZipLib": {
+              "target": "Package",
+              "version": "[1.3.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\d.stojanov\\Desktop\\FileZipper-Local-v2.0\\FileArchiver.Domain\\FileArchiver.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\d.stojanov\\Desktop\\FileZipper-Local-v2.0\\FileArchiver.Domain\\FileArchiver.Domain.csproj",
+        "projectName": "FileArchiver.Domain",
+        "projectPath": "C:\\Users\\d.stojanov\\Desktop\\FileZipper-Local-v2.0\\FileArchiver.Domain\\FileArchiver.Domain.csproj",
+        "packagesPath": "C:\\Users\\d.stojanov\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\d.stojanov\\Desktop\\FileZipper-Local-v2.0\\FileArchiver.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\d.stojanov\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.0, )"
+            },
+            "System.DirectoryServices.AccountManagement": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\d.stojanov\\Desktop\\FileZipper-Local-v2.0\\FileArchiver.Services\\FileArchiver.Services.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\d.stojanov\\Desktop\\FileZipper-Local-v2.0\\FileArchiver.Services\\FileArchiver.Services.csproj",
+        "projectName": "FileArchiver.Services",
+        "projectPath": "C:\\Users\\d.stojanov\\Desktop\\FileZipper-Local-v2.0\\FileArchiver.Services\\FileArchiver.Services.csproj",
+        "packagesPath": "C:\\Users\\d.stojanov\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\d.stojanov\\Desktop\\FileZipper-Local-v2.0\\FileArchiver.Services\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\d.stojanov\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "C:\\Users\\d.stojanov\\Desktop\\FileZipper-Local-v2.0\\FileArchiver.Common\\FileArchiver.Common.csproj": {
+                "projectPath": "C:\\Users\\d.stojanov\\Desktop\\FileZipper-Local-v2.0\\FileArchiver.Common\\FileArchiver.Common.csproj"
+              },
+              "C:\\Users\\d.stojanov\\Desktop\\FileZipper-Local-v2.0\\FileArchiver.Domain\\FileArchiver.Domain.csproj": {
+                "projectPath": "C:\\Users\\d.stojanov\\Desktop\\FileZipper-Local-v2.0\\FileArchiver.Domain\\FileArchiver.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.AspNetCore.Http": {
+              "target": "Package",
+              "version": "[2.2.2, )"
+            },
+            "Microsoft.AspNetCore.Http.Features": {
+              "target": "Package",
+              "version": "[5.0.8, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
+            "SharpZipLib": {
+              "target": "Package",
+              "version": "[1.3.3, )"
+            },
+            "System.Text.RegularExpressions": {
+              "target": "Package",
+              "version": "[4.3.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

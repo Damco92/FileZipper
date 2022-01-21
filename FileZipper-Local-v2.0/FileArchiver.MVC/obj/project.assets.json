@@ -415,11 +415,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Project-FileZipper\\FileArchiver-Deployed-Remote\\FileZipper-Local\\FileArchiver.MVC\\FileArchiver.MVC.csproj",
+      "projectUniqueName": "C:\\Project-FileZipper\\FileArchiver-Deployed-Local\\FileZipper-Local-v2.0\\FileArchiver.MVC\\FileArchiver.MVC.csproj",
       "projectName": "FileArchiver.MVC",
-      "projectPath": "C:\\Project-FileZipper\\FileArchiver-Deployed-Remote\\FileZipper-Local\\FileArchiver.MVC\\FileArchiver.MVC.csproj",
+      "projectPath": "C:\\Project-FileZipper\\FileArchiver-Deployed-Local\\FileZipper-Local-v2.0\\FileArchiver.MVC\\FileArchiver.MVC.csproj",
       "packagesPath": "C:\\Users\\d.stojanov\\.nuget\\packages\\",
-      "outputPath": "C:\\Project-FileZipper\\FileArchiver-Deployed-Remote\\FileZipper-Local\\FileArchiver.MVC\\obj\\",
+      "outputPath": "C:\\Project-FileZipper\\FileArchiver-Deployed-Local\\FileZipper-Local-v2.0\\FileArchiver.MVC\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -439,8 +439,8 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Project-FileZipper\\FileArchiver-Deployed-Remote\\FileZipper-Local\\FileArchiver.Common\\FileArchiver.Common.csproj": {
-              "projectPath": "C:\\Project-FileZipper\\FileArchiver-Deployed-Remote\\FileZipper-Local\\FileArchiver.Common\\FileArchiver.Common.csproj"
+            "C:\\Project-FileZipper\\FileArchiver-Deployed-Local\\FileZipper-Local-v2.0\\FileArchiver.Common\\FileArchiver.Common.csproj": {
+              "projectPath": "C:\\Project-FileZipper\\FileArchiver-Deployed-Local\\FileZipper-Local-v2.0\\FileArchiver.Common\\FileArchiver.Common.csproj"
             }
           }
         }

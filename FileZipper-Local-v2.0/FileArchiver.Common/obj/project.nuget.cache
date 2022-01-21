@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "p/6vEz+e/YucgIaRakfvxK/PdBnoR6S+dkgYwPxowJ+rxoVA5JomubNz1VrGJrNVUjZgp0lbgARTkZKzsc1SNg==",
+  "dgSpecHash": "JiQeTqHYmoFBKnEj9Iqeh7GGtypj5glitERSo68CT5mqzAVO9AqaOuXUGFdV1phkSGUjYAt5tRltPFJSbY5Uyg==",
   "success": true,
-  "projectFilePath": "C:\\Project-FileZipper\\FileArchiver-Deployed-Remote\\FileZipper-Local\\FileArchiver.Common\\FileArchiver.Common.csproj",
+  "projectFilePath": "C:\\Project-FileZipper\\FileArchiver-Deployed-Local\\FileZipper-Local-v2.0\\FileArchiver.Common\\FileArchiver.Common.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\d.stojanov\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.8\\microsoft.aspnetcore.http.features.5.0.8.nupkg.sha512",
     "C:\\Users\\d.stojanov\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.0\\microsoft.extensions.logging.abstractions.6.0.0.nupkg.sha512",

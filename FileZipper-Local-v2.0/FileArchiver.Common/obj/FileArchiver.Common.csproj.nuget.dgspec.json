@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Project-FileZipper\\FileArchiver-Deployed-Remote\\FileZipper-Local\\FileArchiver.Common\\FileArchiver.Common.csproj": {}
+    "C:\\Project-FileZipper\\FileArchiver-Deployed-Local\\FileZipper-Local-v2.0\\FileArchiver.Common\\FileArchiver.Common.csproj": {}
   },
   "projects": {
-    "C:\\Project-FileZipper\\FileArchiver-Deployed-Remote\\FileZipper-Local\\FileArchiver.Common\\FileArchiver.Common.csproj": {
+    "C:\\Project-FileZipper\\FileArchiver-Deployed-Local\\FileZipper-Local-v2.0\\FileArchiver.Common\\FileArchiver.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Project-FileZipper\\FileArchiver-Deployed-Remote\\FileZipper-Local\\FileArchiver.Common\\FileArchiver.Common.csproj",
+        "projectUniqueName": "C:\\Project-FileZipper\\FileArchiver-Deployed-Local\\FileZipper-Local-v2.0\\FileArchiver.Common\\FileArchiver.Common.csproj",
         "projectName": "FileArchiver.Common",
-        "projectPath": "C:\\Project-FileZipper\\FileArchiver-Deployed-Remote\\FileZipper-Local\\FileArchiver.Common\\FileArchiver.Common.csproj",
+        "projectPath": "C:\\Project-FileZipper\\FileArchiver-Deployed-Local\\FileZipper-Local-v2.0\\FileArchiver.Common\\FileArchiver.Common.csproj",
         "packagesPath": "C:\\Users\\d.stojanov\\.nuget\\packages\\",
-        "outputPath": "C:\\Project-FileZipper\\FileArchiver-Deployed-Remote\\FileZipper-Local\\FileArchiver.Common\\obj\\",
+        "outputPath": "C:\\Project-FileZipper\\FileArchiver-Deployed-Local\\FileZipper-Local-v2.0\\FileArchiver.Common\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
