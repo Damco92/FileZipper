@@ -29,19 +29,11 @@ namespace FileArchiver.Services.Services.Implementation
             return files.Select(f => new FileViewModel(f.Id, f.IsDownloaded ,f.FileName,f.Created,f.UserId, f.DocumentTypeId, f.Confirmed));
         }
 
-        //public FileViewModel GetFileByFileId(int fileId) // ??
-        //{
-        //    FileViewModel result = new FileViewModel();
-        //    var file = _filesRepository.GetFileById(fileId);
-        //    result.FileId = file.Id;
-        //    return result;
-        //}
-
         public FileViewModel GetFileById(int fileId, string domainPassword)
         {
             FileViewModel result = new FileViewModel();
             var file = _filesRepository.GetFileById(fileId);
-            Users user = _userRepository.GetUserById(file.UserId);//UserId
+            Users user = _userRepository.GetUserById(file.UserId);
             if (file == null)
                 return result;
 
@@ -94,11 +86,6 @@ namespace FileArchiver.Services.Services.Implementation
             result.DocumentType = MapDocumentTypeToDocumentTypeViewModel(file.DocumentType);
             return result;
         }
-
-        public List<FileViewModel> GetAllFilesByUsername(string username)
-        {
-            return _filesRepository.GetAllFilesByUsername(username).Select(x => new FileViewModel(x.Id, x.IsDownloaded, x.FileName, x.Created, x.UserId, x.DocumentTypeId, x.Confirmed)).ToList();
-        }
         public List<FileViewModel> GetAllFilesByUserId(int Id)
         {
             return _filesRepository.GetAllFilesByUserId(Id).Select(x => new FileViewModel(x.Id, x.IsDownloaded, x.FileName, x.Created, x.UserId, x.DocumentTypeId, x.Confirmed)).ToList();
@@ -139,10 +126,6 @@ namespace FileArchiver.Services.Services.Implementation
         {
             return new DocumentTypeViewModel(documentType.Id, documentType.DocumentName, documentType.FileNameMask, documentType.IsActive);
         }
-        private UploadFileViewModel MapFilesToUploadFileViewModel(Files files)
-        {
-            return new UploadFileViewModel(files.User.Username, files.DocumentTypeId,files.FileName);
-        }
 
         private byte[] Compress(byte[] data)
         {
@@ -178,7 +161,14 @@ namespace FileArchiver.Services.Services.Implementation
         public void UpdateStatusToConfirmed(int fileId)
         {
             var file = _filesRepository.GetFileById(fileId);
-            file.Confirmed = true;
+            if (file.Confirmed.HasValue && file.Confirmed.Value)
+            {
+                file.Confirmed = false;
+            }
+            else
+            {
+                file.Confirmed = true;
+            }
             _filesRepository.UpdateFile(file);
         }
 

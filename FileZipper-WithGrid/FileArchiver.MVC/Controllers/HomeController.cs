@@ -22,7 +22,7 @@ namespace FileArchiver.MVC.Controllers
         private readonly IConfiguration _configuration;
 
         private UploadFileViewModel uploadFileVM;
-        
+
         public HomeController(ILogger<HomeController> logger, IConfiguration configuration)
         {
             _logger = logger;
@@ -45,14 +45,14 @@ namespace FileArchiver.MVC.Controllers
             try
             {
                 var updateUserEndpoint = _configuration.GetValue<string>("ApiEndpoints:Controllers:Users:updateUser");
-                result = await HttpClientHelper.UpdateUser(updateUsersViewModel, baseAddress+updateUserEndpoint);
+                result = await HttpClientHelper.UpdateUser(updateUsersViewModel, baseAddress + updateUserEndpoint);
             }
             catch (Exception ex)
             {
                 ViewBag.ErrorMessage = ex.Message;
                 return View("_UpdateClientData");
             }
-            UserViewModel loggedUser = await HttpClientHelper.GetUser(credentials, baseAddress+ getUserMethod);
+            UserViewModel loggedUser = await HttpClientHelper.GetUser(credentials, baseAddress + getUserMethod);
             if (result == "Success")
             {
                 if (loggedUser.IsAdmin)
@@ -145,7 +145,7 @@ namespace FileArchiver.MVC.Controllers
 
             var getFilesByUsername = _configuration.GetValue<string>("ApiEndpoints:Controllers:Files:getAllFilesByUsername");
             var userFiles = await HttpClientHelper.GetAllFilesByUsername(credentials.Username, baseAddress, getFilesByUsername);
-            
+
             loggeduser.Files = files;
             ViewBag.DataSource = userFiles;
 
@@ -168,7 +168,7 @@ namespace FileArchiver.MVC.Controllers
             var getFileByIdMethod = _configuration.GetValue<string>("ApiEndpoints:Controllers:Users:getFileById");
             var fileToBeDownloaded = await HttpClientHelper.GetFile(fileId, baseAddress, getFileByIdMethod);
 
-            if(!string.IsNullOrEmpty(fileToBeDownloaded.ErrorMessage))
+            if (!string.IsNullOrEmpty(fileToBeDownloaded.ErrorMessage))
                 return Json(false);
 
             return Json(true);
@@ -192,21 +192,42 @@ namespace FileArchiver.MVC.Controllers
         [HttpPost]
         public async Task<IActionResult> RegisterUser(RegisterNewUserViewModel user)
         {
-            if((string.IsNullOrWhiteSpace(user.Username) || string.IsNullOrEmpty(user.Username)) || (string.IsNullOrWhiteSpace(user.FullName) || string.IsNullOrEmpty(user.FullName)) || (string.IsNullOrWhiteSpace(user.ZipPassword)  || (string.IsNullOrEmpty(user.ZipPassword))))
+            if ((string.IsNullOrWhiteSpace(user.Username) || string.IsNullOrEmpty(user.Username)) || (string.IsNullOrWhiteSpace(user.FullName) || string.IsNullOrEmpty(user.FullName)) || (string.IsNullOrWhiteSpace(user.ZipPassword) || (string.IsNullOrEmpty(user.ZipPassword))))
             {
                 ViewBag.ErrorMessage = "All fields are required";
                 return View("RegisterUserForm");
             }
             var baseAddress = _configuration.GetValue<string>("ApiEndpoints:BaseAddress");
             var registerNewUseremthod = _configuration.GetValue<string>("ApiEndpoints:Controllers:Users:registerNewUser");
-            var result = await HttpClientHelper.RegisterNewUser(user,baseAddress + registerNewUseremthod);
-            if(result != "User added")
+            var result = await HttpClientHelper.RegisterNewUser(user, baseAddress + registerNewUseremthod);
+            if (result != "User added")
             {
                 ViewBag.ErrorMessage = "User was not sucessfully added";
                 return RedirectToAction("RegisterUser");
             }
 
             return RedirectToAction("GetToAdminView");
+        }
+
+        [HttpGet("Home/GetFileById/{fileId}")]
+        public async Task<JsonResult> GetFileById([FromRoute] int fileId)
+        {
+            var baseAddress = _configuration.GetValue<string>("ApiEndpoints:BaseAddress");
+            var getFileByIdMethod = _configuration.GetValue<string>("ApiEndpoints:Controllers:Users:getFileById");
+            var fileToBeDownloaded = await HttpClientHelper.GetFile(fileId, baseAddress, getFileByIdMethod);
+
+            return Json(fileToBeDownloaded);
+        }
+
+        [HttpPost("Home/UpdateIsFonfirmed")]
+        public async Task<IActionResult> UpdateIsConfirmed([FromBody] FileViewModel file)
+        {
+            var baseAddress = _configuration.GetValue<string>("ApiEndpoints:BaseAddress");
+            var getFileByIdMethod = _configuration.GetValue<string>("ApiEndpoints:Controllers:Users:updateIsConfirmed");
+
+            string result = await HttpClientHelper.UpdateIsConfirmed(file, baseAddress + getFileByIdMethod);
+
+            return Ok(result);
         }
     }
 }

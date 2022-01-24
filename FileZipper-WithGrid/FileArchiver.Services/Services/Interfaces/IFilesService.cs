@@ -9,7 +9,6 @@ namespace FileArchiver.Services.Services.Interfaces
         void UploadFile(FileViewModel fileVM);
         FileViewModel GetFileByFileNameAndUsername(string fileName, string username);
         FileViewModel GetFileById(int fileId, string domainPassword);
-        List<FileViewModel> GetAllFilesByUsername(string username);
         List<FileViewModel> GetAllFilesByUserId(int userId);
         void UpdateFileToDownloaded(int fileId);
         void UpdateStatusToConfirmed(int fileId);

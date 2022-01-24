@@ -28,7 +28,7 @@
                             <e-grid-column field="DocumentType.DocumentName" headerText="Document Type" headerTextAlign="Center" width="150" textAlign="Left" customAttributes=@(new { @class = "customcss" })></e-grid-column>
                             <e-grid-column field="UserVM.Name" headerText="User" headerTextAlign="Center" width="150" textAlign="Left" customAttributes=@(new { @class = "customcss" })></e-grid-column>
                             <e-grid-column field="Created" headerText="Date" headerTextAlign="Center" width="150" editType="datetimepickeredit" textAlign="Center" format="yMd" customAttributes=@(new { @class = "customcss" })></e-grid-column>
-                            <e-grid-column field="isConfirmed" headerTextAlign="Center" template="#checkboxTemplate" editType="booleanedit" type="boolean" textAlign="Center" width="50" customAttributes=@(new { @class = "customcss" })></e-grid-column>
+                            <e-grid-column field="IsConfimred" headerTextAlign="Center" template="#checkboxTemplate" editType="booleanedit" type="boolean" textAlign="Center" width="50" customAttributes=@(new { @class = "customcss" })></e-grid-column>
                             <e-grid-column  headerText="Download" template="#download" headerTextAlign="Center" textAlign="Center" width="150" customAttributes=@(new { @class = "customcss" })></e-grid-column>
                         </e-grid-columns>
                     </ejs-grid>
@@ -60,29 +60,11 @@
                 grid.pageSettings.pageSize = pageSize + Math.round(pageResize);
                 grid.gridLines = "Both";
             }
+
             document.getElementById('search').addEventListener('click', () => {
                 var grid = document.getElementById("Grid").ej2_instances[0];
                 var searchString = "";
                 grid.search(searchString);
-            });
-            $('#updateButton').click(() => {
-                //document.getElementById('updateButton').addEventListener('click', () => {
-                $('#isConfirmed').change(() => {
-                    let isConfirmed = $('#isConfirmed').val();
-                    let fileId = $("#fileId").val();
-                    $.ajax({
-                        'url': 'http://localhost:58506/api/users/updateIsConfirmed/' + fileId + '/',
-                        'type': 'PUT',
-                        'data': fileId,
-                        'dataType': 'json',
-                        'success': function (data) {
-                            console.log(isConfirmed);
-                        },
-                        'error': function (request, error) {
-                            alert("Request: " + JSON.stringify(request));
-                        }
-                    });
-                });
             });
 
             function rowSelected() {
@@ -92,29 +74,60 @@
             }
 
             function downloadFile() {
-                var broj = rowSelected().FileId;
+                var fileNumber = rowSelected().FileId;
                 $.ajax({
                     type: 'get',
                     async: true,
-                    url: "/Home/DownloadFile/" + broj,
+                    url: "/Home/DownloadFile/" + fileNumber,
                     contentType: "application/text",
                     success: function (response) {
-                        response ? window.location = '@Url.Action("DownloadFileQuery", "Home")?fileId=' + broj + '' : alert("You can download only your files");
+                        response ? window.location = '@Url.Action("DownloadFileQuery", "Home")?fileId=' + fileNumber + '' : alert("You can download only your files");
+                    },
+                    error: () => {
+
                     }
                 });
             }
+
+            function updateIsConfirmed() {
+                var fileNumber = rowSelected().FileId;
+                 $.ajax({
+                     type: 'get',
+                     async: false,
+                     url: "/Home/GetFileById/" + fileNumber,
+                    contentType: "application/text",
+                     success: function (response) {
+                         console.log(response);
+                         console.log(typeof (response));
+                         $.ajax({
+                             type: 'POST',
+                             url: "/Home/UpdateIsFonfirmed/",
+                             contentType: "application/json",
+                             dataType: "json",
+                             data: JSON.stringify(response),
+                             async: false,
+                             success: function (response) {
+                                 console.log(response);
+                             },
+                             error: () => {
+                                 alert('Something went wrong with updating the value')
+                             }
+                         });
+                    },
+                     error: () => {
+                         alert('Something went wrong with getting the file')
+                    }
+                 });
+            }
         </script>
-
-
 
         <script type="text/x-jsrender" id="checkboxTemplate">
             <label class="main">
-                <input type="checkbox" id="isConfirmed" />
+                <input type="checkbox" onchange="updateIsConfirmed()" />
                 <span class="box"></span>
             </label>
         </script>
     }
-
     <style>
         .e-grid .e-rowcell.customcss {
             font-size: 15px;
@@ -137,13 +150,9 @@
             font-size: 20px;
         }
 
-        /* Hide the default checkbox */
         input[type=checkbox] {
             visibility: hidden;
         }
-
-        /* Creating a custom checkbox
-        based on demand */
         .box {
             position: absolute;
             top: 5px;
@@ -153,41 +162,28 @@
             background-color: aliceblue;
         }
 
-        /* Specify the background color to be
-        shown when hovering over checkbox */
         .main:hover input ~ .box {
             background-color: green;
         }
 
-        /* Specify the background color to be
-        shown when checkbox is active */
         .main input:active ~ .box {
             background-color: red;
         }
 
-        /* Specify the background color to be
-        shown when checkbox is checked */
         .main input:checked ~ .box {
             background-color: green;
         }
 
-        /* Checkmark to be shown in checkbox */
-        /* It is not be shown when not checked */
         .box:after {
             content: "";
             position: absolute;
             display: none;
         }
 
-        /* Display checkmark when checked */
         .main input:checked ~ .box:after {
             display: block;
         }
 
-        /* Styling the checkmark using webkit */
-        /* Rotated the rectangle by 45 degree and
-        showing only two border to make it look
-        like a tickmark */
         .main .box:after {
             left: 10px;
             bottom: 7px;

@@ -98,11 +98,11 @@ namespace FileArchiver.API.Controllers
             return Ok(fileVM);
         }
 
-        [HttpPut("updateIsConfirmed/{fileId}")]
-        public IActionResult UpdateIsConfirmed([FromRoute] int fileId)
+        [HttpPost("updateIsConfirmed")]
+        public IActionResult UpdateIsConfirmed([FromBody] FileViewModel file)
         {
-            var fileVM = _fileService.GetFileById(fileId, _credentials.Password);
-            _fileService.UpdateStatusToConfirmed(fileId);
+            var fileVM = _fileService.GetFileById(file.FileId, _credentials.Password);
+            _fileService.UpdateStatusToConfirmed(file.FileId);
             return Ok(fileVM);
         }
 

@@ -302,5 +302,22 @@ namespace FileArchiver.Services.Helpers
                 return await response.Content.ReadAsStringAsync();
             }
         }
+
+        public static async Task<string> UpdateIsConfirmed(FileViewModel file, string urlFromConfig)
+        {
+            var json = JsonConvert.SerializeObject(file);
+            var data = new StringContent(json, Encoding.UTF8, "application/json");
+            var url = urlFromConfig;
+            using (HttpClient client = new HttpClient())
+            {
+                var response = await client.PostAsync(url, data);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    throw new ApplicationException("User not updated");
+                }
+                return await response.Content.ReadAsStringAsync();
+            }
+        }
     }
 }
