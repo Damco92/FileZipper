@@ -74,26 +74,6 @@ namespace FileArchiver.Services.Helpers
             return user;
         }
 
-        public static async Task<FileViewModel> GetFileByFileNameAndUsername(string username, string baseAddress, string method)
-        {
-            FileViewModel files = new FileViewModel();
-            using (HttpClient client = new HttpClient())
-            {
-                client.BaseAddress = new Uri(baseAddress);
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
-
-                var response = await client.GetAsync(method + username);
-                if (!response.IsSuccessStatusCode)
-                {
-                    throw new ApplicationException("User not found");
-                }
-                files = JsonConvert.DeserializeObject<FileViewModel>(await response.Content.ReadAsStringAsync());
-            }
-            return files;
-        }
-
         public static async Task<string> UpdateUser(UpdateUsersViewModel updateUsersViewModel, string urlFromConfig)
         {
             var json = JsonConvert.SerializeObject(updateUsersViewModel);
@@ -194,48 +174,6 @@ namespace FileArchiver.Services.Helpers
             return result;
         }
 
-        public static async Task<string> GetMaskByDocumentName(string documentName)
-        {
-            string result;
-            using (HttpClient client = new HttpClient())
-            {
-                client.BaseAddress = new Uri("http://localhost:58506");
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
-
-                var response = await client.GetAsync($"/api/documentTypes/getMaskForDocument/{documentName}");
-
-                if (!response.IsSuccessStatusCode)
-                {
-                    throw new Exception("Could not load document types");
-                }
-                result = await response.Content.ReadAsStringAsync();
-            }
-            return result;
-        }
-
-        public static async Task<DocumentTypeViewModel> GetDocumentTypeByDocumentName(string documentName)
-        {
-            DocumentTypeViewModel result;
-            using (HttpClient client = new HttpClient())
-            {
-                client.BaseAddress = new Uri("http://localhost:58506");
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
-
-                var response = await client.GetAsync($"/api/documentTypes/getDocumentTypeByDocumentName/{documentName}");
-
-                if (!response.IsSuccessStatusCode)
-                {
-                    throw new Exception("Could not load document types");
-                }
-                result =  JsonConvert.DeserializeObject<DocumentTypeViewModel>(await response.Content.ReadAsStringAsync());
-            }
-            return result;
-        }
-
         public static async Task<string> UploadFile(FileViewModel fileViewModel, string urlFromConfig)
         {
             string result;
@@ -259,27 +197,6 @@ namespace FileArchiver.Services.Helpers
                 if (!response.IsSuccessStatusCode)
                 {
                     throw new ApplicationException("File not uploaded");
-                }
-                result = await response.Content.ReadAsStringAsync();
-            }
-            return result;
-        }
-
-        public static async Task<string> GetUsersPasswordByUsername(string username)
-        {
-            string result;
-            using (HttpClient client = new HttpClient())
-            {
-                client.BaseAddress = new Uri("http://localhost:58506");
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
-
-                var response = await client.GetAsync($"/api/users/GetUsersEncryptedPassword/{username}");
-
-                if (!response.IsSuccessStatusCode)
-                {
-                    throw new Exception("Password not found");
                 }
                 result = await response.Content.ReadAsStringAsync();
             }
@@ -318,6 +235,28 @@ namespace FileArchiver.Services.Helpers
                 }
                 return await response.Content.ReadAsStringAsync();
             }
+        }
+
+        public static async Task<string> GetMaskByDocumentType(string documentType, string url, string getMaskMethod)
+        {
+            string result;
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(url);
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+
+                var response = await client.GetAsync(url + getMaskMethod + documentType);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    throw new Exception("Document mask not found");
+                }
+                result = await response.Content.ReadAsStringAsync();
+            }
+            var cleanResult = result.Substring(2, result.Length - 3);
+            return cleanResult;
         }
     }
 }

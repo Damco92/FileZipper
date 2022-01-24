@@ -223,11 +223,33 @@ namespace FileArchiver.MVC.Controllers
         public async Task<IActionResult> UpdateIsConfirmed([FromBody] FileViewModel file)
         {
             var baseAddress = _configuration.GetValue<string>("ApiEndpoints:BaseAddress");
-            var getFileByIdMethod = _configuration.GetValue<string>("ApiEndpoints:Controllers:Users:updateIsConfirmed");
+            var updateIsConfirmed = _configuration.GetValue<string>("ApiEndpoints:Controllers:Users:updateIsConfirmed");
 
-            string result = await HttpClientHelper.UpdateIsConfirmed(file, baseAddress + getFileByIdMethod);
+            string result = await HttpClientHelper.UpdateIsConfirmed(file, baseAddress + updateIsConfirmed);
 
             return Ok(result);
+        }
+
+        [HttpGet("Home/GetMaskForDocument/{documentName}")]
+        public async Task<JsonResult> GetMaskForDocumentType(string documentName)
+        {
+            var baseAddress = _configuration.GetValue<string>("ApiEndpoints:BaseAddress");
+            var getMaskByDocumentTypeMethod = _configuration.GetValue<string>("ApiEndpoints:Controllers:DocumentTypes:getMaskByDocumentName");
+
+            string result = await HttpClientHelper.GetMaskByDocumentType(documentName, baseAddress, getMaskByDocumentTypeMethod);
+
+            return Json(new { result = result });
+        }
+
+        [HttpGet("Home/GetAllFilesByUsername/{username}")]
+        public async Task<JsonResult> GetAllFilesByUsername([FromRoute] string username)
+        {
+            var baseAddress = _configuration.GetValue<string>("ApiEndpoints:BaseAddress");
+            var getAllFilesByUsername = _configuration.GetValue<string>("ApiEndpoints:Controllers:Files:getAllFilesByUsername");
+
+            List<FileViewModel> result = await HttpClientHelper.GetAllFilesByUsername(username, baseAddress, getAllFilesByUsername);
+
+            return Json(result);
         }
     }
 }

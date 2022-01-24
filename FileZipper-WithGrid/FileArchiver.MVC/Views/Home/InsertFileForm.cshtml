@@ -1,57 +1,36 @@
 ﻿@using FileArchiverCommon.ViewModels
 @model UploadFileViewModel
-@{
-    ViewData["Title"] = "UploadFile";
-}
 
-
-<form enctype='multipart/form-data' method="post" role="form">
+<form enctype='multipart/form-data' method="post" role="form" id="uploadFileForm">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h4 class="text-center">Fill the form to insert a file into grid</h4>
+                <h4 class="text-center">Fill the form to insert a file</h4>
             </div>
         </div>
         <div class="form-group">
             @Html.Label("Username", "Please select a username", new { @class = "ml-4 mb-4" })
-            @Html.DropDownListFor(x => x.Username, new SelectList(Model.Users.Select(x => x.Username)), "Users", new { @class = "dropdown mt-4", id = "username" })
-            @Html.Label("Document Type", "Please select type of document", new { @class = "ml-4 mb-4" })
-            @Html.DropDownListFor(x => x.DocumentName, new SelectList(Model.Documents.Select(x => x.DocumentName)), "Types", new { @class = "dropdown mt-4", id = "documentName" })
-
+            @Html.DropDownListFor(x => x.Username, new SelectList(Model.Users.Select(x => x.Username)), null, new { @class = "dropdown mt-4", id = "username" })
+        </div>
+        <div class="form-group">
+            @Html.Label("Username", "Please select a document", new { @class = "ml-4 mb-4" })
+            @Html.DropDownListFor(x => x.DocumentName, new SelectList(Model.Documents.Select(x => x.DocumentName)), "", new { @class = "dropdown mt-4", id = "documentName" })
+        </div>
+        <div class="form-group">
             @Html.TextBoxFor(x => x.File.FileData, null, htmlAttributes: new { type = "file", @class = "text-center", id = "fileId" })
-            <div>
-                <label id="errorMessage" style="font-size: small; color: red;"></label>
-            </div><br />
-            <div>
-                <input type="button" name="btnInsert" id="addFileToGrid" value="Insert" class="btn btn-primary btn-sm" />
-            </div><br />
-        </div>
-    </div>
-    <div>
-        <div class="form-group mt-4">
-            <ejs-grid id="Grid2" dataSource="@ViewBag.DataSource" allowSorting="true" width="auto" gridLines="Both">
-                <e-grid-columns>
-                    <e-grid-column field="FileName" headerText="File Name" width="auto" textAlign="Center"></e-grid-column>
-                    <e-grid-column field="DocumentName" headerText="Document Name" width="auto" textAlign="Center"></e-grid-column>
-                    <e-grid-column field="Username" headerText="Username" width="auto" textAlign="Center"></e-grid-column>
-                </e-grid-columns>
-            </ejs-grid>
+            <label id="errorMessage" style="font-size: small; color: red;"></label>
         </div>
         <div class="form-group mt-4">
-            
+            <div class="col-md-12 text-center">
+                <input class="btn btn-success mt-4" type="submit" id="uploadButton" value="Upload"/>
+            </div>
         </div>
     </div>
 </form>
-<div class="col-md-12 text-center">
-    <button name="btnUpload" id="uploadButton" class="btn btn-success" >Upload documents</button>
-</div>
 @section scripts {
-    <script type="text/javascript">
+    <script>
         let regexForFile;
         let documentName;
-        let username;
-        let file;
-        let filesToBeUploaded = [];
         $("#uploadButton").prop('disabled', true);
         $('#documentName').change(() => {
             documentName = $('#documentName').val();
@@ -61,24 +40,25 @@
             }
             $("#uploadButton").prop('disabled', false);
             $.ajax({
-                'url': 'http://localhost:58506/api/documentTypes/getMaskForDocument/' + documentName + '/',
+                'url': '/Home/GetMaskForDocument/' + documentName + '/',
                 'type': 'GET',
                 'data': documentName,
                 'dataType': 'text',
                 'async': false,
                 'success': function (data) {
-                    regexForFile = data;
+                    let dataObj = JSON.parse(data);
+                    regexForFile = dataObj.result;
                 },
                 'error': function (request, error) {
                     alert("Request: " + JSON.stringify(request));
                 }
             });
         });
+
         $("#fileId").change(function () {
             let fileName = this.value.replace(/^.*[\\\/]/, '').replace(/\.[^/.]+$/, "");
             let regex = new RegExp(regexForFile);
             let isFileNameValid = regex.test(fileName);
-            let fullFileNameWithExtenstion = this.value.replace(/^.*[\\\/]/, '');
             if (!isFileNameValid) {
                 $('#errorMessage').show();
                 $('#errorMessage').text('Sorry document name not valid!');
@@ -87,97 +67,10 @@
                 $('#errorMessage').hide();
                 $('#uploadButton').prop('disabled', false);
             }
-            let allFilesNames;
-            username = $('#username').val();
-            $.ajax({
-                'url': 'http://localhost:58506/api/files/getAllFiles/' + username + '/',
-                'type': 'GET',
-                'data': username,
-                'dataType': 'text',
-                'async': false,
-                'success': function (response) {
-                    allFilesNames = JSON.parse(response);
-                    let fileWithSamename = allFilesNames.filter(file => file.fileName === fullFileNameWithExtenstion).length;
-                    if (fileWithSamename > 0) {
-                        $('#errorMessage').show();
-                        $('#errorMessage').text('A file with that name alerady exists! Please choose an other file or rename the file');
-                        $('#fileId').val('');
-                        $("#uploadButton").prop('disabled', true);
-                    }
-                },
-                'error': function (request, error) {
-                    console.log(allFilesNames);
-                }
-            });
         });
-        $("#addFileToGrid").click(() => {
-            var gridInstance = document.getElementById("Grid2").ej2_instances[0];
-            let file = $("#fileId").val();
-            let fileWithEx = file.replace(/^.*[\\\/]/, '');
-            let username = $("#username").val();
-            let fileType = $("#documentName").val();
-            let fileToBeUploaded = { "FileName": fileWithEx, "DocumentName": fileType, "Username": username };
-            filesToBeUploaded.push(fileToBeUploaded);
 
-            gridInstance.dataSource = filesToBeUploaded;
-            gridInstance.refresh();
-            console.log(filesToSecGrid);
-        });
         $('#uploadFileForm').submit(function () {
             $(this).find(':submit').attr('disabled', 'disabled');
         });
-        $("#uploadButton").click(() => {
-            $('#uploadButton').prop('disabled', true);
-            let fileId = $('#fileId').val();
-            if (fileId === null || fileId === '') {
-                $('#errorMessage').show();
-                $('#errorMessage').text('You must choose a file!');
-            }
-
-            //$.ajax({
-            //    'url': '/Home/UploadMultipleFiles/',
-            //    'type': 'POST',
-            //    'data': JSON.stringify(filesToBeUploaded),
-            //    'dataType': 'json',
-            //    'contentType': 'application/json; charset=utf-8',
-            //    'async': false,
-            //    'success': function (data) {
-            //        console.log(data)
-            //    },
-            //    'error': function (request, error) {
-            //        alert("Request: " + JSON.stringify(request));
-            //    }
-            //});
-        });
     </script>
-    <style>
-        .fileupload {
-            margin: 20px auto;
-            width: 400px;
-        }
-
-        #droparea {
-            padding: 50px 25px;
-            margin: 30px auto;
-            border: 1px solid #c3c3c3;
-            text-align: center;
-            width: 20%;
-            display: inline-flex;
-        }
-
-        .e-file-select,
-        .e-file-drop {
-            display: none;
-        }
-
-        body .e-upload-drag-hover {
-            outline: 2px dashed brown;
-        }
-
-        #uploadfile {
-            width: 60%;
-            display: inline-flex;
-            margin-left: 5%;
-        }
-    </style>
 }
