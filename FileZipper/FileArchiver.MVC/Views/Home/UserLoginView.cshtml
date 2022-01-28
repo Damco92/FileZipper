@@ -1,0 +1,93 @@
+﻿@using FileArchiver.Common.ViewModels
+@{ 
+    ViewData["Title"] = "GetToUserView"; 
+}
+
+@model UserViewModel
+<div class="container mt-4">
+    <div class="row mb-5">
+        <div class="col-md-5">
+            <h5 class="ml-3 text-left" style="top: 60px">Logged in user: @Model.Name</h5>
+        </div>
+        <div class="col-md-5">
+            @Html.ActionLink(linkText: "Edit user details", actionName: "UpdateUser", routeValues: null, htmlAttributes: new { @class = "btn btn-success btn-sm text-center mr-5", @style = "top: 60px;" })
+        </div>
+        <div class="col-md-2">
+            @Html.ActionLink(linkText: "Log out", controllerName: "Login", actionName: "Logout", routeValues: null, htmlAttributes: new { @class = "btn btn-danger btn-sm text-center mr-5", @style = "top: 60px;" })
+        </div>
+    </div>
+
+        <div class="form-group mt-4">
+            <ejs-grid id="Grid" dataSource="@ViewBag.DataSource" allowSorting="true" allowPaging="true" width="1200" height="300" load="load" allowResizing="true" enableHover="true" enableStickyHeader="true" toolbar="@(new List<string>() {"Search"})" rowSelected="rowSelected">
+                <e-grid-selectionsettings type="Single"></e-grid-selectionsettings>
+                <e-grid-columns>
+                    <e-grid-column field="FileId" headerText="Id" visible="false" headerTextAlign="Center" width="150" textAlign="Left" customAttributes=@(new { @class = "customcss" })></e-grid-column>
+                    <e-grid-column field="FileName" headerText="Document Name" headerTextAlign="Center" width="150" textAlign="Left" customAttributes=@(new { @class = "customcss" })></e-grid-column>
+                    <e-grid-column field="DocumentType.DocumentName" headerText="Document Type" headerTextAlign="Center" width="150" textAlign="Left" customAttributes=@(new { @class = "customcss" })></e-grid-column>
+                    <e-grid-column field="Created" headerText="Date" headerTextAlign="Center" width="150" editType="datetimepickeredit" textAlign="Center" format="dd-MM-yyyy hh:MM" customAttributes=@(new { @class = "customcss" })></e-grid-column>
+                    <e-grid-column headerText="Download" template="#download" headerTextAlign="Center" textAlign="Center" width="150" customAttributes=@(new { @class = "customcss" })></e-grid-column>
+                </e-grid-columns>
+            </ejs-grid>
+        </div>
+    </div>
+
+
+@section scripts {
+    <script id="download" type="text/x-template">
+        @{
+             <button class="btn btn-success btn-sm" onclick="downloadFile()">Download</button>
+        }
+    </script>
+    <script type="text/javascript">
+        function load() {
+            var grid = document.getElementById("Grid").ej2_instances[0];
+            var rowHeight = grid.getRowHeight();
+            var gridHeight = grid.height;
+            var pageSize = grid.pageSettings.pageSize;
+            var pageResize = (gridHeight - (pageSize * rowHeight)) / rowHeight;
+            grid.pageSettings.pageSize = pageSize + Math.round(pageResize);
+            grid.gridLines = "Both";
+        }
+           document.getElementById('search').addEventListener('click', () => {
+                var grid = document.getElementById("Grid").ej2_instances[0];
+                var searchString = "";
+                grid.search(searchString);
+            });
+
+            function rowSelected() {
+                var grid = document.getElementsByClassName('e-grid')[0].ej2_instances[0];
+                var selectedRecord = grid.getSelectedRecords()[0];
+                return selectedRecord;
+            }
+
+            function downloadFile() {
+                var fileNumber = rowSelected().FileId;
+                $.ajax({
+                    type: 'get',
+                    async: true,
+                    url: "/Home/DownloadFile/" + fileNumber,
+                    contentType: "application/text",
+                    success: function (response) {
+                        response ? window.location = '@Url.Action("DownloadFileQuery", "Home")?fileId=' + fileNumber + '' : alert("You can download only your files");
+                    },
+                    error: () => {
+
+                    }
+                });
+            }
+    </script>
+}
+
+<style>
+    .e-grid .e-rowcell.customcss {
+        font-size: 15px;
+    }
+
+    .e-grid .e-headercell.customcss {
+        background-color: lightgray;
+        color: darkslategray;
+        font-family: Arial;
+        font-size: 20px;
+        font-weight: bold;
+    }
+</style>

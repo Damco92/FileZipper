@@ -1,0 +1,97 @@
+﻿ @using FileArchiver.Common.ViewModels
+@model UploadFileViewModel
+
+<form enctype='multipart/form-data' method="post" role="form" id="uploadFileForm">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="text-center">Fill the form to insert a file</h4>
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Username", "Please select a username", new { @class = "ml-4 mb-4" })
+            @Html.DropDownListFor(x => x.Username, new SelectList(Model.Users.Select(x => x.Username)), null, new { @class = "dropdown mt-4", id = "username" })
+        </div>
+        <div class="form-group">
+            @Html.Label("Username", "Please select a document", new { @class = "ml-4 mb-4" })
+            @Html.DropDownListFor(x => x.DocumentName, new SelectList(Model.Documents.Select(x => x.DocumentName)), "", new { @class = "dropdown mt-4", id = "documentName" })
+        </div>
+        <div class="form-group">
+            @Html.TextBoxFor(x => x.File.FileData, null, htmlAttributes: new { type = "file", @class = "text-center ml-2", id = "fileId" })
+            <label id="showRegex" style="font-size: small; color: black;"></label>
+            <label id="errorMessage" style="font-size: small; color: red;"></label>
+        </div><br />
+    </div>
+      <div class="form-group mt-4">
+          <div class="col-md-12 text-center">
+              <input class="btn btn-success mt-4 text-center" type="submit" id="uploadButton" value="Upload File" />
+          </div>
+      </div>
+</form>
+@section scripts {
+    <script>
+        
+        let regexForFile;
+        let documentName;
+        $("#uploadButton").prop('disabled', true);
+        $('#documentName').change(() => {
+            documentName = $('#documentName').val();
+            if (documentName === "") {
+                $("#uploadButton").prop('disabled', true);
+                return;
+            }
+
+            if ($('#documentName').val() == '' || $("#fileId").val() == '' || $("#fileId").val() == null) {
+                $("#uploadButton").attr('disabled', 'disabled');
+                alert("You must choose a username, document type and file first!")
+                return;
+            }
+            $("#uploadButton").prop('disabled', false);
+            $.ajax({
+                'url': '/Home/GetMaskForDocument/' + documentName + '/',
+                'type': 'GET',
+                'data': documentName,
+                'dataType': 'text',
+                'async': false,
+                'success': function (data) {
+                    let dataObj = JSON.parse(data);
+                    regexForFile = dataObj.result;
+                    $("#showRegex").show();
+                    $("#showRegex").text(regexForFile);
+                },
+                'error': function (request, error) {
+                    alert("Request: " + JSON.stringify(request));
+                }
+            });
+        });
+
+        $("#fileId").change(function () {
+            let fileName = this.value.replace(/^.*[\\\/]/, '').replace(/\.[^/.]+$/, "");
+            let regex = new RegExp(regexForFile);
+            let isFileNameValid = regex.test(fileName);
+            if (!isFileNameValid) {
+                $('#errorMessage').show();
+                $('#errorMessage').text('Sorry document name not valid!');
+            }
+            else {
+                $('#errorMessage').hide();
+                $('#uploadButton').prop('disabled', false);
+            }
+
+            if ($('#documentName').val() == '' || $("#fileId").val() == '' || $("#fileId").val() == null) {
+                $("#uploadButton").attr('disabled', 'disabled');
+                alert("You must choose a username, document type and file first!")
+                return;
+            }
+        });
+
+        $('#uploadFileForm').submit(function () {
+            if ($('#documentName').val() == '' || $("#fileId").val() == '' || $("#fileId").val() == null) {
+                $("#uploadButton").attr('disabled', 'disabled');
+                alert("You must choose a username, document type and file first!")
+                return;
+            }
+            $(this).find(':submit').attr('disabled', 'disabled');
+        });
+    </script>
+}

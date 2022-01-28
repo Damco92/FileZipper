@@ -1,0 +1,35 @@
+﻿@model FileArchiver.Common.ViewModels.CredentialsViewModel
+<form action="/" method="post" class="mt-4 text-center pb-4">
+    <div class="form-group mb-4">
+        <div class="row">
+            <div class="col-md-12">
+                <label>Username</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @Html.TextBoxFor(x => x.Username)
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <label>Password</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            @Html.PasswordFor(x => x.Password)
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <button type="submit" id="login" class="mt-4 btn btn-lg text-center btn-success">Log in</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h4 class="text-danger">@ViewBag.ErrorMessage</h4>
+        </div>
+    </div>
+</form>

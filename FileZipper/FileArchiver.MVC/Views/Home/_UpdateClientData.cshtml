@@ -1,0 +1,55 @@
+﻿@using FileArchiver.Common.ViewModels
+@model UpdateUsersViewModel
+
+<form action="/" method="post" class="mt-4 text-center pb-4">
+    <div class="form-group text-center mb-4">
+        <div class="row">
+            <div class="col-md-12">
+                @Html.LabelFor(x => x.UsersNewName, "Insert new name for the user")
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @Html.TextBoxFor(x => x.UsersNewName)
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-12">
+                @Html.LabelFor(x => x.ZipPassword, "Insert new zip password for user")
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @Html.PasswordFor(x => x.ZipPassword, new { placeholder = "Enter zip password" })
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-12">
+                @Html.LabelFor(x => x.ConfirmZipPassword, "Confirm password")
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @Html.PasswordFor(x => x.ConfirmZipPassword, new { placeholder = "Confirm inserted password" })
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <button type="submit" asp-action="UpdateUser" class="mt-4 btn btn-lg text-center btn-success">Save changes</button>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-md-12">
+                @if (ViewBag.ErrorMessage != "Success" || ViewBag.ErrorMessage != null)
+                {
+                    <div class="row mt-4">
+                        <div class="col-md-12">
+                            <h4 class="text-danger">@ViewBag.ErrorMessage</h4>
+                        </div>
+                    </div>
+                }
+        </div>
+    </div>
+</form>
