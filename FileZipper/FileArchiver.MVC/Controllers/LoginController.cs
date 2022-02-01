@@ -25,6 +25,7 @@ namespace FileArchiver.MVC.Controllers
         {
             return View();
         }
+
         [HttpPost]
         [AllowAnonymous]
         public async Task<IActionResult> Login(CredentialsViewModel loginCredentials)

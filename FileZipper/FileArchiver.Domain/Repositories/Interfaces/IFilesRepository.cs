@@ -8,7 +8,6 @@ namespace FileArchiver.Domain.Repositories.Interfaces
         IEnumerable<Files> GetAllFiles();
         IEnumerable<Files> GetAllFilesByUserId(int userId);
         Files GetFileById(int fileId);
-        Files GetUserByFileId(int fileId);
         Files GetFileByFileNameAndUsername(string fileName, string username);
         void InsertFile(Files file);
         void UpdateFile(Files file);

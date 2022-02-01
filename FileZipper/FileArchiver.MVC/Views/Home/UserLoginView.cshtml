@@ -26,7 +26,7 @@
                     <e-grid-column field="FileName" headerText="Document Name" headerTextAlign="Center" width="150" textAlign="Left" customAttributes=@(new { @class = "customcss" })></e-grid-column>
                     <e-grid-column field="DocumentType.DocumentName" headerText="Document Type" headerTextAlign="Center" width="150" textAlign="Left" customAttributes=@(new { @class = "customcss" })></e-grid-column>
                     <e-grid-column field="Created" headerText="Date" headerTextAlign="Center" width="150" editType="datetimepickeredit" textAlign="Center" format="dd-MM-yyyy hh:MM" customAttributes=@(new { @class = "customcss" })></e-grid-column>
-                    <e-grid-column headerText="Download" template="#download" headerTextAlign="Center" textAlign="Center" width="150" customAttributes=@(new { @class = "customcss" })></e-grid-column>
+                    <e-grid-column headerText="Download" template="#download" headerTextAlign="Center" textAlign="Center" width="60" customAttributes=@(new { @class = "customcss" })></e-grid-column>
                 </e-grid-columns>
             </ejs-grid>
         </div>
@@ -36,7 +36,7 @@
     @section scripts {
         <script id="download" type="text/x-template">
             @{
-                        <button class="btn btn-success btn-sm text-center mr-5" onclick="downloadFile()">Download<i class="fa fa-download" style="font-size: 20px; color:black;"></i></button>
+                <button class="btn btn-success" onclick="downloadFile()" style="font-size: 15px; color: white; position: center;">Download</button>
             }
         </script>
         <script type="text/javascript">

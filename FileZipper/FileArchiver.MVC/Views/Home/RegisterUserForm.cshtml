@@ -5,15 +5,15 @@
     <div class="container mt-4 mb-4">
         <div class="form-group mt-4">
             @Html.LabelFor(x => x.Username, "Insert username", new { @class = "text-left mr-3" })
-            @Html.TextBoxFor(x => x.Username)
+            @Html.TextBoxFor(x => x.Username, new { @id = "username" })
         </div>
         <div class="form-group mt-4 col-md-12">
             @Html.LabelFor(x => x.FullName, "Insert name", new { @class = "text-left mr-4" })
-            @Html.TextBoxFor(x => x.FullName)
+            @Html.TextBoxFor(x => x.FullName, new { @id = "fullName" })
         </div>
         <div class="form-group mt-4 col-md-12">
             @Html.LabelFor(x => x.ZipPassword, "Insert password", new { @class = "text-left mr-3" })
-            @Html.PasswordFor(x => x.ZipPassword)
+            @Html.PasswordFor(x => x.ZipPassword, new { @id = "password" })
         </div>
         <div class="form-group mt-4">
             <div class="col-md-12 text-center">
@@ -35,16 +35,13 @@
 
 @section scripts {
 <script>
-    let isAdminValue;
-    $('#registerBtn').prop('disabled', true);
-    $('#isAdmin').change(() => {
-        isAdminValue = $('#isAdmin').val();
-        if (isAdminValue !== '') {
-            $('#registerBtn').prop('disabled', false);
+    $('#registerUserForm').submit(function () {
+        if ($('#password').val() == '' || $("#fullName").val() == '' || $("#username").val() == null) {
+            $("#registerBtn").attr('disabled', 'disabled');
+            alert("You must enter username, full name and password!")
+            return;
         }
-        else {
-            $('#registerBtn').prop('disabled', true);
-        }
-    })
+        $(this).find(':submit').attr('disabled', 'disabled');
+    });
 </script>
 }

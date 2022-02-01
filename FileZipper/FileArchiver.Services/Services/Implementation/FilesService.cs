@@ -26,7 +26,7 @@ namespace FileArchiver.Services.Implementation
         public IEnumerable<FileViewModel> GetAllFiles()
         {
             var files = _filesRepository.GetAllFiles();
-            return files.Select(f => new FileViewModel(f.Id, f.IsDownloaded ,f.FileName,f.Created,f.UserId, f.DocumentTypeId, f.Confirmed));
+            return files.Select(f => new FileViewModel(f.Id, f.IsDownloaded ,f.FileName,f.Created,f.UserId, f.DocumentTypeId));
         }
         public FileViewModel GetFileById(int fileId)
         {
@@ -51,7 +51,6 @@ namespace FileArchiver.Services.Implementation
             result.FileName = file.FileName;
             result.IsDownloaded = file.IsDownloaded;
             result.Created = file.Created;
-            result.IsConfirmed = file.Confirmed;
             var decompressedFileData = Decompress(file.Data);
 
             if (admin.IsAdmin)
@@ -132,7 +131,7 @@ namespace FileArchiver.Services.Implementation
         }
         public List<FileViewModel> GetAllFilesByUserId(int Id)
         {
-            return _filesRepository.GetAllFilesByUserId(Id).Select(x => new FileViewModel(x.Id, x.IsDownloaded, x.FileName, x.Created, x.UserId, x.DocumentTypeId, x.Confirmed)).ToList();
+            return _filesRepository.GetAllFilesByUserId(Id).Select(x => new FileViewModel(x.Id, x.IsDownloaded, x.FileName, x.Created, x.UserId, x.DocumentTypeId)).ToList();
         }
 
         public void UploadFile(FileViewModel fileVM)
@@ -162,7 +161,7 @@ namespace FileArchiver.Services.Implementation
         {
             UserViewModel result = new UserViewModel(user.Id, user.Username, user.Name, user.IsAdmin);
 
-            result.Files = user.Files.Select(x => new FileViewModel(x.Id, x.IsDownloaded, x.FileName, x.Created, x.UserId, x.DocumentTypeId, x.Confirmed)).ToList();
+            result.Files = user.Files.Select(x => new FileViewModel(x.Id, x.IsDownloaded, x.FileName, x.Created, x.UserId, x.DocumentTypeId)).ToList();
             return result;
         }
 

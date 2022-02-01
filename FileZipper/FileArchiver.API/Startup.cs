@@ -1,20 +1,14 @@
 using FileArchiver.Domain.Context;
-using FileArchiver.Domain.Repositories;
+using FileArchiver.Domain.Repositories.Implementation;
 using FileArchiver.Domain.Repositories.Interfaces;
 using FileArchiver.Services.Implementation;
 using FileArchiver.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace FileArchiver.API
 {

@@ -78,62 +78,6 @@ namespace FileArchiver.Common.Helpers
             return match.Success;
         }
 
-       public static bool IsTextFile(string fileName)
-        {
-            Regex reg = new Regex("^.+[.]txt");
-            Match match = reg.Match(fileName);
-            return match.Success;
-        }
-
-        public static bool IsPdfFile(string fileName)
-        {
-            Regex reg = new Regex("^.+[.]pdf");
-            Match match = reg.Match(fileName);
-            return match.Success;
-        }
-
-        public static bool IsImageFile(string fileName)
-        {
-            Regex reg = new Regex("^.+[.]png");
-            Match match = reg.Match(fileName);
-            return match.Success;
-        }
-
-        public static bool IsJsonFile(string fileName)
-        {
-            Regex reg = new Regex("^.+[.]json");
-            Match match = reg.Match(fileName);
-            return match.Success;
-        }
-
-        public static bool IsJPGFile(string fileName)
-        {
-            Regex reg = new Regex("^.+[.]jpg");
-            Match match = reg.Match(fileName);
-            return match.Success;
-        }
-
-        public static bool IsXMLFile(string fileName)
-        {
-            Regex reg = new Regex("^.+[.]xml");
-            Match match = reg.Match(fileName);
-            return match.Success;
-        }
-
-        public static bool IsZipFile(string fileName)
-        {
-            Regex reg = new Regex("^.+[.]zip");
-            Match match = reg.Match(fileName);
-            return match.Success;
-        }
-
-        public static bool Is7ZipFile(string fileName)
-        {
-            Regex reg = new Regex("^.+[.]7z");
-            Match match = reg.Match(fileName);
-            return match.Success;
-        }
-
         public static bool DoPasswordsMatch(string password, string confirmedPassword)
         {
             return password.Equals(confirmedPassword);

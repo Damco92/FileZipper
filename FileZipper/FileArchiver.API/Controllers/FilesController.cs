@@ -63,7 +63,6 @@ namespace FileArchiver.API.Controllers
             fileViewModel.DocumentType = _documentTypeService.GetDocumentTypeByDocumentName(fileViewModel.DocumentName);
             fileViewModel.UserVM = _usersService.GetUserByUsername(fileViewModel.UserThatAFileIsUploadedToUsername);
             fileViewModel.IsDownloaded = false;
-            fileViewModel.IsConfirmed = false;
             _filesService.UploadFile(fileViewModel);
 
             return Ok("Success");

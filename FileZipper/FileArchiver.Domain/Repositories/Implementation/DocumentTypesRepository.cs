@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace FileArchiver.Domain.Repositories
+namespace FileArchiver.Domain.Repositories.Implementation
 {
     public class DocumentTypesRepository : IDocumentTypesRepository
     {

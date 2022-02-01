@@ -50,8 +50,6 @@ namespace FileArchiver.Domain.Context
 
                 entity.HasIndex(e => e.UserId);
 
-                entity.Property(e => e.Confirmed).HasDefaultValueSql("((0))");
-
                 entity.Property(e => e.Created).HasColumnType("smalldatetime");
 
                 entity.Property(e => e.FileName).HasMaxLength(200);

@@ -11,6 +11,5 @@ namespace FileArchiver.Common.ViewModels
         public string DocumentName { get; set; }
         public int DocumentTypeId { get; set; }
         public List<DocumentTypeViewModel> Documents { get; set; }
-        public List<FileViewModel> FilesToBeUploaded { get; set; }
     }
 }

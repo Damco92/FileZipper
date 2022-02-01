@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace FileArchiver.Domain.Repositories
+namespace FileArchiver.Domain.Repositories.Implementation
 {
     public class FilesRepositroy : IFilesRepository
     {
@@ -36,13 +36,6 @@ namespace FileArchiver.Domain.Repositories
             }
             _dbContext.SaveChanges();
         }
-
-        public Files GetUserByFileId(int fileId)
-        {
-            var user = _dbContext.Files.Include(u => u.User.Username).Where(x => x.Id == fileId);
-            return (Files)user;
-        }
-        
         public IEnumerable<Files> GetAllFilesByUserId(int userId)
         {
             return _dbContext.Files.Where(x => x.UserId == userId);

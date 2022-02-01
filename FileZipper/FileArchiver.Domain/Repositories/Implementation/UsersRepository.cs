@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace FileArchiver.Domain.Repositories
+namespace FileArchiver.Domain.Repositories.Implementation
 {
     public class UsersRepository : IUsersRepository
     {
@@ -45,10 +45,6 @@ namespace FileArchiver.Domain.Repositories
         {
             var user = _dbContext.Users.Include(x => x.Files).FirstOrDefault(x => x.Username == username);
             return user;
-        }
-        public Users GetUserIdByUsername(string username)
-        {
-            return _dbContext.Users.FirstOrDefault(x => x.Username == username);
         }
 
         public void InsertUser(Users user)

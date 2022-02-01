@@ -9,7 +9,6 @@ namespace FileArchiver.Domain.Repositories.Interfaces
         IEnumerable<Users> GetAllUsers();
         Users GetUserByLoginCredentials(string username, string password);
         Users GetUserByUsername(string username);
-        Users GetUserIdByUsername(string username);
         void UpdateUser(Users user);
         Users GetCreatorByUserId(int userId);
         void InsertUser(Users user);

@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Http;
+
 namespace FileArchiver.Common.ViewModels
 {
     public class FileViewModel
     {
         public FileViewModel()  {}
-        public FileViewModel(int id, bool? isDownloaded, string fileName, DateTime created, int userId, int docType, bool? confirmed)
+        public FileViewModel(int id, bool? isDownloaded, string fileName, DateTime created, int userId, int docType)
         {
             FileId = id;
             IsDownloaded = isDownloaded;
@@ -14,13 +15,11 @@ namespace FileArchiver.Common.ViewModels
             Created = created;
             UserId = userId;
             DocumentTypeId = docType;
-            IsConfirmed = confirmed;
         }
         public int FileId { get; set; }
         public UserViewModel UserVM { get; set; }
         public string UserThatAFileIsUploadedToUsername { get; set; }
         public bool? IsDownloaded { get; set; }
-        public bool? IsConfirmed { get; set; }
         public string FileName { get; set; }
         public DateTime  Created { get; set; }
         public int CreatorId { get; set; }

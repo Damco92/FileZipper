@@ -13,7 +13,6 @@ namespace FileArchiver.Domain.Models
         public int Creator { get; set; }
         public string FileName { get; set; }
         public string UploadNote { get; set; }
-        public bool? Confirmed { get; set; }
 
         public virtual DocumentTypes DocumentType { get; set; }
         public virtual Users User { get; set; }

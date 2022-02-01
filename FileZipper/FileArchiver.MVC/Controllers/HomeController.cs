@@ -127,7 +127,6 @@ namespace FileArchiver.MVC.Controllers
 
             uploadFileViewModel.File.UserThatAFileIsUploadedToUsername = user.Username;
             uploadFileViewModel.File.IsDownloaded = false;
-            uploadFileViewModel.File.IsConfirmed = false;
             uploadFileViewModel.File.Created = DateTime.Now;
             uploadFileViewModel.File.DocumentName = uploadFileViewModel.DocumentName;
             uploadFileViewModel.File.DocumentTypeId = uploadFileViewModel.DocumentTypeId;
@@ -207,68 +206,6 @@ namespace FileArchiver.MVC.Controllers
             return View("UserLoginView", loggeduser);
         }
 
-        [HttpGet("Home/DownloadFile/{fileId}")]
-        public async Task<JsonResult> DownloadFile([FromRoute] int fileId)
-        {
-            {
-                var baseAddress = _configuration.GetValue<string>("ApiEndpoints:BaseAddress");
-                var getFileByIdMethod = _configuration.GetValue<string>("ApiEndpoints:Controllers:Users:getFileById");
-
-                FileViewModel filesToBeDownloaded = new FileViewModel();
-
-                try
-                {
-                    await HttpClientHelper.GetFile(fileId, baseAddress, getFileByIdMethod);
-                }
-                catch (Exception ex)
-                {
-                    _logger.LogError(ex.Message);
-                }
-
-                if (!string.IsNullOrEmpty(filesToBeDownloaded.ErrorMessage))
-                {
-                    _logger.LogError(filesToBeDownloaded.ErrorMessage);
-                    return Json(false);
-                }
-
-                return Json(true);
-            }
-        }
-        [HttpGet("Home/DownloadFileQuery")]
-        public async Task<FileResult> DownloadFileQuery([FromQuery] int fileId)
-        {
-            var baseAddress = _configuration.GetValue<string>("ApiEndpoints:BaseAddress");
-            var getFileByIdMethod = _configuration.GetValue<string>("ApiEndpoints:Controllers:Users:getFileById");
-            FileViewModel fileToBeDownloaded = new FileViewModel();
-            try
-            {
-                fileToBeDownloaded = await HttpClientHelper.GetFile(fileId, baseAddress, getFileByIdMethod);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex.Message);
-            }
-            return File(fileToBeDownloaded.FileByteData, System.Net.Mime.MediaTypeNames.Application.Octet, Path.GetFileNameWithoutExtension(fileToBeDownloaded.FileName) + ".7z");
-        }
-
-        [HttpPost("Home/DeleteFile")]
-        public async Task<IActionResult> DeleteFile([FromForm] FileViewModel file)
-        {
-            var baseAddress = _configuration.GetValue<string>("ApiEndpoints:BaseAddress");
-            var deleteFile = _configuration.GetValue<string>("ApiEndpoints:Controllers:Files:deleteFile");
-            FileViewModel fileToBeDeleted = new FileViewModel();
-            fileToBeDeleted.FileId = file.FileId;
-            try
-            {
-                fileToBeDeleted = await HttpClientHelper.DeleteFile(fileToBeDeleted, baseAddress, deleteFile);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex.Message);
-            }
-            return Ok(fileToBeDeleted);
-        }
-
         [HttpGet]
         public IActionResult RegisterUser()
         {
@@ -303,6 +240,69 @@ namespace FileArchiver.MVC.Controllers
             }
 
             return RedirectToAction("GetToAdminView");
+        }
+
+        [HttpGet("Home/DownloadFile/{fileId}")]
+        public async Task<JsonResult> DownloadFile([FromRoute] int fileId)
+        {
+            {
+                var baseAddress = _configuration.GetValue<string>("ApiEndpoints:BaseAddress");
+                var getFileByIdMethod = _configuration.GetValue<string>("ApiEndpoints:Controllers:Users:getFileById");
+
+                FileViewModel filesToBeDownloaded = new FileViewModel();
+
+                try
+                {
+                    await HttpClientHelper.GetFile(fileId, baseAddress, getFileByIdMethod);
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex.Message);
+                }
+
+                if (!string.IsNullOrEmpty(filesToBeDownloaded.ErrorMessage))
+                {
+                    _logger.LogError(filesToBeDownloaded.ErrorMessage);
+                    return Json(false);
+                }
+
+                return Json(true);
+            }
+        }
+
+        [HttpGet("Home/DownloadFileQuery")]
+        public async Task<FileResult> DownloadFileQuery([FromQuery] int fileId)
+        {
+            var baseAddress = _configuration.GetValue<string>("ApiEndpoints:BaseAddress");
+            var getFileByIdMethod = _configuration.GetValue<string>("ApiEndpoints:Controllers:Users:getFileById");
+            FileViewModel fileToBeDownloaded = new FileViewModel();
+            try
+            {
+                fileToBeDownloaded = await HttpClientHelper.GetFile(fileId, baseAddress, getFileByIdMethod);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+            }
+            return File(fileToBeDownloaded.FileByteData, System.Net.Mime.MediaTypeNames.Application.Octet, Path.GetFileNameWithoutExtension(fileToBeDownloaded.FileName) + ".7z");
+        }
+
+        [HttpPost("Home/DeleteFile")]
+        public async Task<IActionResult> DeleteFile([FromForm] FileViewModel file)
+        {
+            var baseAddress = _configuration.GetValue<string>("ApiEndpoints:BaseAddress");
+            var deleteFile = _configuration.GetValue<string>("ApiEndpoints:Controllers:Files:deleteFile");
+            FileViewModel fileToBeDeleted = new FileViewModel();
+            fileToBeDeleted.FileId = file.FileId;
+            try
+            {
+                fileToBeDeleted = await HttpClientHelper.DeleteFile(fileToBeDeleted, baseAddress, deleteFile);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+            }
+            return Ok(fileToBeDeleted);
         }
 
         [HttpGet("Home/GetFileById/{fileId}")]
