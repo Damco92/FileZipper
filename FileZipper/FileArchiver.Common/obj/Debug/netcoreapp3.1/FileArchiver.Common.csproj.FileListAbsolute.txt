@@ -116,3 +116,16 @@ C:\Project-FileZipper\FileArchiver-Deployed-Remote\FileZipper\FileArchiver.Commo
 C:\Project-FileZipper\FileArchiver-Deployed-Remote\FileZipper\FileArchiver.Common\obj\Debug\netcoreapp3.1\FileArchiver.Common.csproj.CopyComplete
 C:\Project-FileZipper\FileArchiver-Deployed-Remote\FileZipper\FileArchiver.Common\obj\Debug\netcoreapp3.1\FileArchiver.Common.dll
 C:\Project-FileZipper\FileArchiver-Deployed-Remote\FileZipper\FileArchiver.Common\obj\Debug\netcoreapp3.1\FileArchiver.Common.pdb
+C:\Users\a.petrusev\Source\Repos\Damco92\FileZipper\FileZipper\FileArchiver.Common\bin\Debug\netcoreapp3.1\FileArchiver.Common.deps.json
+C:\Users\a.petrusev\Source\Repos\Damco92\FileZipper\FileZipper\FileArchiver.Common\bin\Debug\netcoreapp3.1\FileArchiver.Common.dll
+C:\Users\a.petrusev\Source\Repos\Damco92\FileZipper\FileZipper\FileArchiver.Common\bin\Debug\netcoreapp3.1\FileArchiver.Common.pdb
+C:\Users\a.petrusev\Source\Repos\Damco92\FileZipper\FileZipper\FileArchiver.Common\bin\Debug\netcoreapp3.1\FileArchiver.Domain.dll
+C:\Users\a.petrusev\Source\Repos\Damco92\FileZipper\FileZipper\FileArchiver.Common\bin\Debug\netcoreapp3.1\FileArchiver.Domain.pdb
+C:\Users\a.petrusev\Source\Repos\Damco92\FileZipper\FileZipper\FileArchiver.Common\obj\Debug\netcoreapp3.1\FileArchiver.Common.csproj.AssemblyReference.cache
+C:\Users\a.petrusev\Source\Repos\Damco92\FileZipper\FileZipper\FileArchiver.Common\obj\Debug\netcoreapp3.1\FileArchiver.Common.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\a.petrusev\Source\Repos\Damco92\FileZipper\FileZipper\FileArchiver.Common\obj\Debug\netcoreapp3.1\FileArchiver.Common.AssemblyInfoInputs.cache
+C:\Users\a.petrusev\Source\Repos\Damco92\FileZipper\FileZipper\FileArchiver.Common\obj\Debug\netcoreapp3.1\FileArchiver.Common.AssemblyInfo.cs
+C:\Users\a.petrusev\Source\Repos\Damco92\FileZipper\FileZipper\FileArchiver.Common\obj\Debug\netcoreapp3.1\FileArchiver.Common.csproj.CoreCompileInputs.cache
+C:\Users\a.petrusev\Source\Repos\Damco92\FileZipper\FileZipper\FileArchiver.Common\obj\Debug\netcoreapp3.1\FileArchiver.Common.csproj.CopyComplete
+C:\Users\a.petrusev\Source\Repos\Damco92\FileZipper\FileZipper\FileArchiver.Common\obj\Debug\netcoreapp3.1\FileArchiver.Common.dll
+C:\Users\a.petrusev\Source\Repos\Damco92\FileZipper\FileZipper\FileArchiver.Common\obj\Debug\netcoreapp3.1\FileArchiver.Common.pdb

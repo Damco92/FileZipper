@@ -5794,23 +5794,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\d.stojanov\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\a.petrusev\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Project-FileZipper\\FileArchiver-Deployed-Remote\\FileZipper\\FileArchiver.Services\\FileArchiver.Services.csproj",
+      "projectUniqueName": "C:\\Users\\a.petrusev\\Source\\Repos\\Damco92\\FileZipper\\FileZipper\\FileArchiver.Services\\FileArchiver.Services.csproj",
       "projectName": "FileArchiver.Services",
-      "projectPath": "C:\\Project-FileZipper\\FileArchiver-Deployed-Remote\\FileZipper\\FileArchiver.Services\\FileArchiver.Services.csproj",
-      "packagesPath": "C:\\Users\\d.stojanov\\.nuget\\packages\\",
-      "outputPath": "C:\\Project-FileZipper\\FileArchiver-Deployed-Remote\\FileZipper\\FileArchiver.Services\\obj\\",
+      "projectPath": "C:\\Users\\a.petrusev\\Source\\Repos\\Damco92\\FileZipper\\FileZipper\\FileArchiver.Services\\FileArchiver.Services.csproj",
+      "packagesPath": "C:\\Users\\a.petrusev\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\a.petrusev\\Source\\Repos\\Damco92\\FileZipper\\FileZipper\\FileArchiver.Services\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\d.stojanov\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\a.petrusev\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5824,11 +5820,11 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Project-FileZipper\\FileArchiver-Deployed-Remote\\FileZipper\\FileArchiver.Common\\FileArchiver.Common.csproj": {
-              "projectPath": "C:\\Project-FileZipper\\FileArchiver-Deployed-Remote\\FileZipper\\FileArchiver.Common\\FileArchiver.Common.csproj"
+            "C:\\Users\\a.petrusev\\Source\\Repos\\Damco92\\FileZipper\\FileZipper\\FileArchiver.Common\\FileArchiver.Common.csproj": {
+              "projectPath": "C:\\Users\\a.petrusev\\Source\\Repos\\Damco92\\FileZipper\\FileZipper\\FileArchiver.Common\\FileArchiver.Common.csproj"
             },
-            "C:\\Project-FileZipper\\FileArchiver-Deployed-Remote\\FileZipper\\FileArchiver.Domain\\FileArchiver.Domain.csproj": {
-              "projectPath": "C:\\Project-FileZipper\\FileArchiver-Deployed-Remote\\FileZipper\\FileArchiver.Domain\\FileArchiver.Domain.csproj"
+            "C:\\Users\\a.petrusev\\Source\\Repos\\Damco92\\FileZipper\\FileZipper\\FileArchiver.Domain\\FileArchiver.Domain.csproj": {
+              "projectPath": "C:\\Users\\a.petrusev\\Source\\Repos\\Damco92\\FileZipper\\FileZipper\\FileArchiver.Domain\\FileArchiver.Domain.csproj"
             }
           }
         }

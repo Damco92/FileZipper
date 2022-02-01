@@ -28,8 +28,18 @@ namespace FileArchiver.Services.Implementation
             var files = _filesRepository.GetAllFiles();
             return files.Select(f => new FileViewModel(f.Id, f.IsDownloaded ,f.FileName,f.Created,f.UserId, f.DocumentTypeId, f.Confirmed));
         }
+        public FileViewModel GetFileById(int fileId)
+        {
+            FileViewModel result = new FileViewModel();
+            var file = _filesRepository.GetFileById(fileId);
+            if(file==null){
+                return result;
+            }
+            result.FileId = file.Id;
+            return result;
+        }
 
-        public FileViewModel GetFileById(int fileId, string domainPassword)
+        public FileViewModel GetFileById(int fileId, string domainPassword, UserViewModel admin)
         {
             FileViewModel result = new FileViewModel();
             var file = _filesRepository.GetFileById(fileId);
@@ -43,32 +53,57 @@ namespace FileArchiver.Services.Implementation
             result.Created = file.Created;
             result.IsConfirmed = file.Confirmed;
             var decompressedFileData = Decompress(file.Data);
-            #region Ziping
-            try
-            {
-                var encryptedPass = user.ZipPassword;
-                byte[] bytesToBedDecrypted = Convert.FromBase64String(encryptedPass);
-                var keyByteArray = HashingHelper.GetDomainPasswordByteArray(domainPassword);
-                var decryptedPasswordBytes = HashingHelper.AES_Decrypt(bytesToBedDecrypted, keyByteArray);
-                var decryptedResult = Encoding.UTF8.GetString(decryptedPasswordBytes);
-                using (var ms = new MemoryStream())
-                {
-                    using (var outStream = new ZipOutputStream(ms))
-                    {
 
-                        outStream.SetLevel(9);
-                        outStream.Password = decryptedResult;
-                        outStream.PutNextEntry(new ZipEntry(file.FileName));
-                        outStream.Write(decompressedFileData);
+            if (admin.IsAdmin)
+            {
+                try
+                {
+                    using (var ms = new MemoryStream())
+                    {
+                        using (var outStream = new ZipOutputStream(ms))
+                        {
+
+                            outStream.SetLevel(9);
+                            outStream.PutNextEntry(new ZipEntry(file.FileName));
+                            outStream.Write(decompressedFileData);
+                        }
+                        result.FileByteData = ms.ToArray();
                     }
-                    result.FileByteData = ms.ToArray();
+                }
+                catch (Exception)
+                {
+                    throw;
                 }
             }
-            catch (Exception ex)
+            else
             {
-                result.ErrorMessage = "Error with decrypting the password!";
+                #region Ziping
+                try
+                {
+                    var encryptedPass = user.ZipPassword;
+                    byte[] bytesToBedDecrypted = Convert.FromBase64String(encryptedPass);
+                    var keyByteArray = HashingHelper.GetDomainPasswordByteArray(domainPassword);
+                    var decryptedPasswordBytes = HashingHelper.AES_Decrypt(bytesToBedDecrypted, keyByteArray);
+                    var decryptedResult = Encoding.UTF8.GetString(decryptedPasswordBytes);
+                    using (var ms = new MemoryStream())
+                    {
+                        using (var outStream = new ZipOutputStream(ms))
+                        {
+
+                            outStream.SetLevel(9);
+                            outStream.Password = decryptedResult;
+                            outStream.PutNextEntry(new ZipEntry(file.FileName));
+                            outStream.Write(decompressedFileData);
+                        }
+                        result.FileByteData = ms.ToArray();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    result.ErrorMessage = "Error with decrypting the password!";
+                }
+                #endregion
             }
-            #endregion
             return result;
         }
         public FileViewModel GetFileByFileNameAndUsername(string username, string fileName)
@@ -159,31 +194,16 @@ namespace FileArchiver.Services.Implementation
                 return resultStream.ToArray();
             }
         }
-
+        public void DeleteFile(FileViewModel fileVM)
+        {
+            var file = _filesRepository.GetFileById(fileVM.FileId);
+            _filesRepository.DeleteFile(file);
+        }
         public void UpdateFileToDownloaded(int fileId)
         {
             var file = _filesRepository.GetFileById(fileId);
             file.IsDownloaded = true;
             _filesRepository.UpdateFile(file);
-        }
-
-        public void UpdateStatusToConfirmed(int fileId)
-        {
-            var file = _filesRepository.GetFileById(fileId);
-            if (file.Confirmed.HasValue && file.Confirmed.Value)
-            {
-                file.Confirmed = false;
-            }
-            else
-            {
-                file.Confirmed = true;
-            }
-            _filesRepository.UpdateFile(file);
-        }
-
-        public void UploadMultipleFiles(List<FileViewModel> filesVM)
-        {
-            filesVM.ForEach(fvm => UploadFile(fvm));
         }
     }
 }

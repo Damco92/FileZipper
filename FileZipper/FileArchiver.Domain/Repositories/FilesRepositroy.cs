@@ -2,6 +2,7 @@
 using FileArchiver.Domain.Models;
 using FileArchiver.Domain.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -22,6 +23,18 @@ namespace FileArchiver.Domain.Repositories
         public Files GetFileById(int fileId)
         {
             return _dbContext.Files.FirstOrDefault(x => x.Id == fileId);
+        }
+        public void DeleteFile(Files file)
+        {
+            try
+            {
+                _dbContext.Files.Remove(file);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("File can not be deleted");
+            }
+            _dbContext.SaveChanges();
         }
 
         public Files GetUserByFileId(int fileId)

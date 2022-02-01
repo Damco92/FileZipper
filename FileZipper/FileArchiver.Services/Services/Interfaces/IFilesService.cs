@@ -8,10 +8,9 @@ namespace FileArchiver.Services.Interfaces
         IEnumerable<FileViewModel> GetAllFiles();
         void UploadFile(FileViewModel fileVM);
         FileViewModel GetFileByFileNameAndUsername(string fileName, string username);
-        FileViewModel GetFileById(int fileId, string domainPassword);
+        FileViewModel GetFileById(int fileId, string domainPassword, UserViewModel user);
         List<FileViewModel> GetAllFilesByUserId(int userId);
         void UpdateFileToDownloaded(int fileId);
-        void UpdateStatusToConfirmed(int fileId);
-        void UploadMultipleFiles(List<FileViewModel> files);
+        void DeleteFile(FileViewModel file);
     }
 }

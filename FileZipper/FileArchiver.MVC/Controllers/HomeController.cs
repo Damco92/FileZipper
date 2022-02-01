@@ -210,28 +210,30 @@ namespace FileArchiver.MVC.Controllers
         [HttpGet("Home/DownloadFile/{fileId}")]
         public async Task<JsonResult> DownloadFile([FromRoute] int fileId)
         {
-            var baseAddress = _configuration.GetValue<string>("ApiEndpoints:BaseAddress");
-            var getFileByIdMethod = _configuration.GetValue<string>("ApiEndpoints:Controllers:Users:getFileById");
-            FileViewModel fileToBeDownloaded = new FileViewModel();
-
-            try
             {
-                await HttpClientHelper.GetFile(fileId, baseAddress, getFileByIdMethod);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex.Message);
-            }
+                var baseAddress = _configuration.GetValue<string>("ApiEndpoints:BaseAddress");
+                var getFileByIdMethod = _configuration.GetValue<string>("ApiEndpoints:Controllers:Users:getFileById");
 
-            if (!string.IsNullOrEmpty(fileToBeDownloaded.ErrorMessage))
-            {
-                _logger.LogError(fileToBeDownloaded.ErrorMessage);
-                return Json(false);
-            }
+                FileViewModel filesToBeDownloaded = new FileViewModel();
 
-            return Json(true);
+                try
+                {
+                    await HttpClientHelper.GetFile(fileId, baseAddress, getFileByIdMethod);
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex.Message);
+                }
+
+                if (!string.IsNullOrEmpty(filesToBeDownloaded.ErrorMessage))
+                {
+                    _logger.LogError(filesToBeDownloaded.ErrorMessage);
+                    return Json(false);
+                }
+
+                return Json(true);
+            }
         }
-
         [HttpGet("Home/DownloadFileQuery")]
         public async Task<FileResult> DownloadFileQuery([FromQuery] int fileId)
         {
@@ -247,6 +249,24 @@ namespace FileArchiver.MVC.Controllers
                 _logger.LogError(ex.Message);
             }
             return File(fileToBeDownloaded.FileByteData, System.Net.Mime.MediaTypeNames.Application.Octet, Path.GetFileNameWithoutExtension(fileToBeDownloaded.FileName) + ".7z");
+        }
+
+        [HttpPost("Home/DeleteFile")]
+        public async Task<IActionResult> DeleteFile([FromForm] FileViewModel file)
+        {
+            var baseAddress = _configuration.GetValue<string>("ApiEndpoints:BaseAddress");
+            var deleteFile = _configuration.GetValue<string>("ApiEndpoints:Controllers:Files:deleteFile");
+            FileViewModel fileToBeDeleted = new FileViewModel();
+            fileToBeDeleted.FileId = file.FileId;
+            try
+            {
+                fileToBeDeleted = await HttpClientHelper.DeleteFile(fileToBeDeleted, baseAddress, deleteFile);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+            }
+            return Ok(fileToBeDeleted);
         }
 
         [HttpGet]
@@ -302,25 +322,6 @@ namespace FileArchiver.MVC.Controllers
             }
 
             return Json(fileToBeDownloaded);
-        }
-
-        [HttpPost("Home/UpdateIsFonfirmed")]
-        public async Task<IActionResult> UpdateIsConfirmed([FromBody] FileViewModel file)
-        {
-            var baseAddress = _configuration.GetValue<string>("ApiEndpoints:BaseAddress");
-            var updateIsConfirmed = _configuration.GetValue<string>("ApiEndpoints:Controllers:Users:updateIsConfirmed");
-            string result = string.Empty;
-
-            try
-            {
-               result = await HttpClientHelper.UpdateIsConfirmed(file, baseAddress + updateIsConfirmed);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex.Message);
-            }
-            
-            return Ok(result);
         }
 
         [HttpGet("Home/GetMaskForDocument/{documentName}")]

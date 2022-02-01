@@ -101,7 +101,7 @@ namespace FileArchiver.Common.Helpers
 
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw new ApplicationException("User not found");
+                    throw new ApplicationException("File not found");
                 }
                 var myMagicFileFinaly = JsonConvert.DeserializeObject<FileViewModel>(await response.Content.ReadAsStringAsync());
 
@@ -164,7 +164,7 @@ namespace FileArchiver.Common.Helpers
 
                 if (!response.IsSuccessStatusCode)
                 {
-                  //  throw new Exception("Could not load document types");
+                    throw new Exception("Could not load document types");
                 }
 
                 result = JsonConvert.DeserializeObject<List<DocumentTypeViewModel>>(await response.Content.ReadAsStringAsync());
@@ -217,21 +217,26 @@ namespace FileArchiver.Common.Helpers
                 return await response.Content.ReadAsStringAsync();
             }
         }
-
-        public static async Task<string> UpdateIsConfirmed(FileViewModel file, string urlFromConfig)
+        public static async Task<FileViewModel> DeleteFile(FileViewModel file, string url, string method)
         {
             var json = JsonConvert.SerializeObject(file);
             var data = new StringContent(json, Encoding.UTF8, "application/json");
-            var url = urlFromConfig;
             using (HttpClient client = new HttpClient())
             {
-                var response = await client.PostAsync(url, data);
+                client.BaseAddress = new Uri(url);
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+                string wholeUrl = url + method;
+                var response = await client.PostAsync(url + method, data);
 
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw new ApplicationException("User not updated");
+                    throw new ApplicationException("File not deleted");
                 }
-                return await response.Content.ReadAsStringAsync();
+                var myMagicFileFinaly = JsonConvert.DeserializeObject<FileViewModel>(await response.Content.ReadAsStringAsync());
+
+                return myMagicFileFinaly;
             }
         }
 

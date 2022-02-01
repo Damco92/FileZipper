@@ -92,16 +92,9 @@ namespace FileArchiver.API.Controllers
         [HttpGet("getFileById/{fileId}")]
         public IActionResult GetFileById([FromRoute] int fileId)
         {
-            var fileVM = _fileService.GetFileById(fileId, _credentials.Password);
+            var user = _userService.GetUserByUsername(_credentials.Username);
+            var fileVM = _fileService.GetFileById(fileId, _credentials.Password, user);
             _fileService.UpdateFileToDownloaded(fileId);
-            return Ok(fileVM);
-        }
-
-        [HttpPost("updateIsConfirmed")]
-        public IActionResult UpdateIsConfirmed([FromBody] FileViewModel file)
-        {
-            var fileVM = _fileService.GetFileById(file.FileId, _credentials.Password);
-            _fileService.UpdateStatusToConfirmed(file.FileId);
             return Ok(fileVM);
         }
 

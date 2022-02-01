@@ -12,5 +12,6 @@ namespace FileArchiver.Domain.Repositories.Interfaces
         Files GetFileByFileNameAndUsername(string fileName, string username);
         void InsertFile(Files file);
         void UpdateFile(Files file);
+        void DeleteFile(Files file);
     }
 }

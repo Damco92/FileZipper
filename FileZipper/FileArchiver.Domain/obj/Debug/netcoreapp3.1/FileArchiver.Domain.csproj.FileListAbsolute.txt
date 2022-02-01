@@ -128,3 +128,16 @@ C:\Project-FileZipper\FileArchiver-Deployed-Remote\FileZipper\FileArchiver.Domai
 C:\Project-FileZipper\FileArchiver-Deployed-Remote\FileZipper\FileArchiver.Domain\obj\Debug\netcoreapp3.1\FileArchiver.Domain.pdb
 C:\Project-FileZipper\FileArchiver-Deployed-Remote\FileZipper\FileArchiver.Domain\obj\Debug\netcoreapp3.1\FileArchiver.Domain.genruntimeconfig.cache
 C:\Project-FileZipper\FileArchiver-Deployed-Remote\FileZipper\FileArchiver.Domain\obj\Debug\netcoreapp3.1\FileArchiver.Domain.csproj.AssemblyReference.cache
+C:\Users\a.petrusev\Source\Repos\Damco92\FileZipper\FileZipper\FileArchiver.Domain\bin\Debug\netcoreapp3.1\FileArchiver.Domain.deps.json
+C:\Users\a.petrusev\Source\Repos\Damco92\FileZipper\FileZipper\FileArchiver.Domain\bin\Debug\netcoreapp3.1\FileArchiver.Domain.runtimeconfig.json
+C:\Users\a.petrusev\Source\Repos\Damco92\FileZipper\FileZipper\FileArchiver.Domain\bin\Debug\netcoreapp3.1\FileArchiver.Domain.runtimeconfig.dev.json
+C:\Users\a.petrusev\Source\Repos\Damco92\FileZipper\FileZipper\FileArchiver.Domain\bin\Debug\netcoreapp3.1\FileArchiver.Domain.dll
+C:\Users\a.petrusev\Source\Repos\Damco92\FileZipper\FileZipper\FileArchiver.Domain\bin\Debug\netcoreapp3.1\FileArchiver.Domain.pdb
+C:\Users\a.petrusev\Source\Repos\Damco92\FileZipper\FileZipper\FileArchiver.Domain\obj\Debug\netcoreapp3.1\FileArchiver.Domain.csproj.AssemblyReference.cache
+C:\Users\a.petrusev\Source\Repos\Damco92\FileZipper\FileZipper\FileArchiver.Domain\obj\Debug\netcoreapp3.1\FileArchiver.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\a.petrusev\Source\Repos\Damco92\FileZipper\FileZipper\FileArchiver.Domain\obj\Debug\netcoreapp3.1\FileArchiver.Domain.AssemblyInfoInputs.cache
+C:\Users\a.petrusev\Source\Repos\Damco92\FileZipper\FileZipper\FileArchiver.Domain\obj\Debug\netcoreapp3.1\FileArchiver.Domain.AssemblyInfo.cs
+C:\Users\a.petrusev\Source\Repos\Damco92\FileZipper\FileZipper\FileArchiver.Domain\obj\Debug\netcoreapp3.1\FileArchiver.Domain.csproj.CoreCompileInputs.cache
+C:\Users\a.petrusev\Source\Repos\Damco92\FileZipper\FileZipper\FileArchiver.Domain\obj\Debug\netcoreapp3.1\FileArchiver.Domain.dll
+C:\Users\a.petrusev\Source\Repos\Damco92\FileZipper\FileZipper\FileArchiver.Domain\obj\Debug\netcoreapp3.1\FileArchiver.Domain.pdb
+C:\Users\a.petrusev\Source\Repos\Damco92\FileZipper\FileZipper\FileArchiver.Domain\obj\Debug\netcoreapp3.1\FileArchiver.Domain.genruntimeconfig.cache

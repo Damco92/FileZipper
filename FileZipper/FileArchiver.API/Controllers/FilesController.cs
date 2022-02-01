@@ -25,6 +25,12 @@ namespace FileArchiver.API.Controllers
             var files = _filesService.GetAllFiles();
             return Ok(files);
         }
+        [HttpPost("deleteFile")]
+        public IActionResult DeleteFile([FromBody] FileViewModel file)
+        {
+            _filesService.DeleteFile(file);
+            return Ok("Success");
+        }
 
         [HttpGet("getAllFilesByUsername/{username}")]
         public IActionResult GetAllFilesByUsername([FromRoute] string username)
@@ -43,7 +49,6 @@ namespace FileArchiver.API.Controllers
             return Ok(result);
         }
         
-
         [HttpGet("getFileByFileName/{username}/{fileName}")]
         public IActionResult GetFileByFileNameAndUsername([FromRoute]string username ,[FromRoute] string fileName)
         {
@@ -62,13 +67,6 @@ namespace FileArchiver.API.Controllers
             _filesService.UploadFile(fileViewModel);
 
             return Ok("Success");
-        }
-
-        [HttpPost("uploadMultipleFiles")]
-        public IActionResult UploadMultipleFiles([FromBody] UploadFileViewModel uploadFile)
-        {
-            _filesService.UploadMultipleFiles(uploadFile.FilesToBeUploaded);
-            return Ok("Here");
         }
     }
 }
